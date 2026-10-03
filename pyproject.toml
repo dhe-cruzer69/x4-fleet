@@ -1,0 +1,29 @@
+[project]
+name = "x4-fleet"
+version = "0.1.0"
+description = "Self-healing AI agent fleet inventory, metrics, and auto-healing core"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [{ name = "ARIEX4Ops", email = "dhe-cruzer69@users.noreply.github.com" }]
+dependencies = [
+    "httpx>=0.27",
+    "pydantic>=2.0",
+    "pyyaml>=6.0",
+    "python-dateutil>=2.9",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6", "mypy>=1.11"]
+
+[project.scripts]
+x4-fleet-inventory = "collectors.gh_inventory:main"
+x4-fleet-health = "collectors.gh_actions_health:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["collectors*", "healing*"]

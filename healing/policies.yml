@@ -1,0 +1,28 @@
+# X4 Fleet autonomy policies
+# Level 0 = Observe, 1 = Assist, 2 = Governed Autopilot, 3 = Never autonomous
+
+default_level: 0
+
+repos:
+  x4-beast:
+    level: 1
+    notes: "Flagship — assist only until evidence ledger is green"
+  x4-fleet:
+    level: 2
+    notes: "Self-healing core — may open issues and trivial PRs"
+  x4-evidence:
+    level: 1
+  x4-autofix:
+    level: 1
+  x4-sec:
+    level: 1
+  x4-sec-action:
+    level: 1
+
+# Global hard stops (Level 3 — never auto)
+hard_stops:
+  - delete_repository
+  - change_visibility
+  - modify_secrets
+  - force_push_main
+  - merge_without_review

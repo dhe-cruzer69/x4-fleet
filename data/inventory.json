@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-10-03T00:00:00+00:00",
+  "owner": "dhe-cruzer69",
+  "total": 0,
+  "public": 0,
+  "private": 0,
+  "archived": 0,
+  "empty_stubs": 0,
+  "stale": 0,
+  "repos": [],
+  "note": "Run collectors/gh_inventory.py with GITHUB_TOKEN to populate"
+}
