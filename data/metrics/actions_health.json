@@ -1,0 +1,126 @@
+{
+  "generated_at": "2026-10-03T23:13:50.444866+00:00",
+  "failing_repos": 15,
+  "failures": [
+    {
+      "repo": "arise-v9",
+      "workflow": "ARIEX4OPS CI",
+      "run_id": 35476987762,
+      "html_url": "https://github.com/dhe-cruzer69/arise-v9/actions/runs/35476987762",
+      "head_sha": "fe20c3b",
+      "created_at": "2026-09-19T23:45:44Z"
+    },
+    {
+      "repo": "n8n-docs",
+      "workflow": "Lychee external linkcheck",
+      "run_id": 34852830159,
+      "html_url": "https://github.com/dhe-cruzer69/n8n-docs/actions/runs/34852830159",
+      "head_sha": "f4b6064",
+      "created_at": "2026-09-14T14:00:50Z"
+    },
+    {
+      "repo": "next.js",
+      "workflow": "npm_and_yarn in /., /.github, /apps/bundle-analyzer, /evals/evals/agent-000-app-router-migration-simple, /evals/evals/agent-024-avoid-redundant-usestate, /evals/evals/agent-030-app-router-migration-hard, /examples/cms-buttercms, /examples/cms-sitecore-xmcloud, /examples/with-apollo, /examples/with-clerk, /examples/with-docker, /examples/with-docker-export-output, /examples/with-electron, /examples/with-electron-typescript, /examples/with-graphql-hooks, /examples/with-nhost-auth-realtime-graphql, /example...",
+      "run_id": 36959530435,
+      "html_url": "https://github.com/dhe-cruzer69/next.js/actions/runs/36959530435",
+      "head_sha": "a84bfcf",
+      "created_at": "2026-10-02T03:17:40Z"
+    },
+    {
+      "repo": "project-scaffold",
+      "workflow": "npm_and_yarn in /. for qs, qs - Update #1567497827",
+      "run_id": 34426423630,
+      "html_url": "https://github.com/dhe-cruzer69/project-scaffold/actions/runs/34426423630",
+      "head_sha": "8eb17e7",
+      "created_at": "2026-09-10T01:40:37Z"
+    },
+    {
+      "repo": "x4-agent-observability",
+      "workflow": "CI",
+      "run_id": 35478790839,
+      "html_url": "https://github.com/dhe-cruzer69/x4-agent-observability/actions/runs/35478790839",
+      "head_sha": "5f2b956",
+      "created_at": "2026-09-20T00:26:48Z"
+    },
+    {
+      "repo": "x4-agent-skills-hub",
+      "workflow": "CI",
+      "run_id": 35478713165,
+      "html_url": "https://github.com/dhe-cruzer69/x4-agent-skills-hub/actions/runs/35478713165",
+      "head_sha": "d51778c",
+      "created_at": "2026-09-20T00:25:03Z"
+    },
+    {
+      "repo": "x4-agents",
+      "workflow": "CI",
+      "run_id": 35512736729,
+      "html_url": "https://github.com/dhe-cruzer69/x4-agents/actions/runs/35512736729",
+      "head_sha": "72181e0",
+      "created_at": "2026-09-20T13:10:40Z"
+    },
+    {
+      "repo": "x4-ai-security-scanner",
+      "workflow": "CI",
+      "run_id": 35478744721,
+      "html_url": "https://github.com/dhe-cruzer69/x4-ai-security-scanner/actions/runs/35478744721",
+      "head_sha": "ceca562",
+      "created_at": "2026-09-20T00:25:44Z"
+    },
+    {
+      "repo": "x4-fleet",
+      "workflow": "CI",
+      "run_id": 37121024711,
+      "html_url": "https://github.com/dhe-cruzer69/x4-fleet/actions/runs/37121024711",
+      "head_sha": "58f635c",
+      "created_at": "2026-10-03T11:52:13Z"
+    },
+    {
+      "repo": "x4-mcp-server-starter",
+      "workflow": "CI",
+      "run_id": 35478766049,
+      "html_url": "https://github.com/dhe-cruzer69/x4-mcp-server-starter/actions/runs/35478766049",
+      "head_sha": "aa90541",
+      "created_at": "2026-09-20T00:26:13Z"
+    },
+    {
+      "repo": "x4-mcpgen",
+      "workflow": "CI",
+      "run_id": 35488317375,
+      "html_url": "https://github.com/dhe-cruzer69/x4-mcpgen/actions/runs/35488317375",
+      "head_sha": "4c6714a",
+      "created_at": "2026-09-20T04:06:58Z"
+    },
+    {
+      "repo": "x4-obs",
+      "workflow": "CI",
+      "run_id": 35488408314,
+      "html_url": "https://github.com/dhe-cruzer69/x4-obs/actions/runs/35488408314",
+      "head_sha": "0cd0a04",
+      "created_at": "2026-09-20T04:09:05Z"
+    },
+    {
+      "repo": "x4-runtime",
+      "workflow": "CI",
+      "run_id": 35488444286,
+      "html_url": "https://github.com/dhe-cruzer69/x4-runtime/actions/runs/35488444286",
+      "head_sha": "db70ea1",
+      "created_at": "2026-09-20T04:09:57Z"
+    },
+    {
+      "repo": "x4-sec",
+      "workflow": "CI",
+      "run_id": 35488257932,
+      "html_url": "https://github.com/dhe-cruzer69/x4-sec/actions/runs/35488257932",
+      "head_sha": "65addf0",
+      "created_at": "2026-09-20T04:05:36Z"
+    },
+    {
+      "repo": "x4-skills",
+      "workflow": "CI",
+      "run_id": 35488366954,
+      "html_url": "https://github.com/dhe-cruzer69/x4-skills/actions/runs/35488366954",
+      "head_sha": "4bd5e25",
+      "created_at": "2026-09-20T04:08:07Z"
+    }
+  ]
+}
