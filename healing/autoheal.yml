@@ -1,0 +1,25 @@
+# Declarative autoheal policy (consumed by future autoheal Actions)
+version: 1
+
+triggers:
+  - type: workflow_failure
+    action: open_issue
+    labels: [fleet-heal, ci-failure]
+  - type: staleness_days
+    threshold: 14
+    action: open_issue
+    labels: [fleet-heal, stale]
+  - type: empty_stub
+    action: open_issue
+    labels: [fleet-heal, empty-stub, archive-candidate]
+
+level_2_actions:
+  - bump_action_version
+  - fix_lint
+  - restore_gitignore
+
+hard_stops:
+  - delete_repository
+  - modify_secrets
+  - force_push_main
+  - change_visibility

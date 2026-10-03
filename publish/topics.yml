@@ -1,0 +1,40 @@
+# Recommended GitHub topics for X4 / ARIEXCORE repos (trending Oct 2026)
+# Apply via: gh repo edit OWNER/REPO --add-topic TOPIC
+
+core:
+  - ai-agents
+  - mcp
+  - model-context-protocol
+  - local-first
+  - autonomous-agents
+  - multi-agent
+  - agent-framework
+  - self-healing
+  - observability
+  - evidence-based
+
+fleet:
+  - fleet-management
+  - github-actions
+  - inventory
+  - ci-cd
+  - automation
+
+security:
+  - sarif
+  - code-scanning
+  - least-privilege
+  - agent-security
+  - supply-chain-security
+
+skills:
+  - agent-skills
+  - mcp-server
+  - tool-use
+  - skill-registry
+
+routing:
+  - model-routing
+  - llm-router
+  - cost-optimization
+  - latency

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "X4 Evidence Entry",
+  "type": "object",
+  "required": ["id", "claim", "status", "observed_at"],
+  "properties": {
+    "id": { "type": "string" },
+    "claim": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["OBSERVED", "CORRELATED", "HYPOTHESIS", "VALIDATED", "UNKNOWN", "FAIL"]
+    },
+    "observed_at": { "type": "string", "format": "date-time" },
+    "sources": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "repo": { "type": "string" },
+    "evidence_urls": {
+      "type": "array",
+      "items": { "type": "string", "format": "uri" }
+    },
+    "notes": { "type": "string" }
+  }
+}
