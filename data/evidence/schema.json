@@ -1,25 +1,20 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/dhe-cruzer69/x4-fleet/data/evidence/schema.json",
   "title": "X4 Evidence Entry",
   "type": "object",
-  "required": ["id", "claim", "status", "observed_at"],
+  "required": ["id", "state", "claim", "observed_at", "source"],
   "properties": {
-    "id": { "type": "string" },
-    "claim": { "type": "string" },
-    "status": {
+    "id": { "type": "string", "description": "Stable evidence id" },
+    "state": {
       "type": "string",
       "enum": ["OBSERVED", "CORRELATED", "HYPOTHESIS", "VALIDATED", "UNKNOWN", "FAIL"]
     },
+    "claim": { "type": "string" },
     "observed_at": { "type": "string", "format": "date-time" },
-    "sources": {
-      "type": "array",
-      "items": { "type": "string" }
-    },
+    "source": { "type": "string" },
     "repo": { "type": "string" },
-    "evidence_urls": {
-      "type": "array",
-      "items": { "type": "string", "format": "uri" }
-    },
+    "artifacts": { "type": "array", "items": { "type": "string" } },
     "notes": { "type": "string" }
   }
 }

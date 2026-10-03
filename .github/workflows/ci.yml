@@ -29,14 +29,15 @@ jobs:
           pip install -e ".[dev]"
 
       - name: Lint
-        run: ruff check collectors healing || true
+        run: ruff check collectors healing tests
 
       - name: Type check
-        run: mypy collectors --ignore-missing-imports || true
+        run: mypy collectors --ignore-missing-imports
 
       - name: Unit tests
         run: pytest -q --tb=short
 
-      - name: Inventory dry-run (no token)
+      - name: Import dry-run
         run: |
-          python -c "from collectors.gh_inventory import summarize; print('ok')"
+          python -c "from collectors.gh_inventory import summarize, compute_staleness; print('inventory ok')"
+          python -c "from collectors.gh_actions_health import main; print('health module ok')"
