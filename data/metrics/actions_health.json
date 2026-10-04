@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-03T23:13:50.444866+00:00",
+  "generated_at": "2026-10-04T23:25:24.378171+00:00",
   "failing_repos": 15,
   "failures": [
     {
@@ -20,11 +20,11 @@
     },
     {
       "repo": "next.js",
-      "workflow": "npm_and_yarn in /., /.github, /apps/bundle-analyzer, /evals/evals/agent-000-app-router-migration-simple, /evals/evals/agent-024-avoid-redundant-usestate, /evals/evals/agent-030-app-router-migration-hard, /examples/cms-buttercms, /examples/cms-sitecore-xmcloud, /examples/with-apollo, /examples/with-clerk, /examples/with-docker, /examples/with-docker-export-output, /examples/with-electron, /examples/with-electron-typescript, /examples/with-graphql-hooks, /examples/with-nhost-auth-realtime-graphql, /example...",
-      "run_id": 36959530435,
-      "html_url": "https://github.com/dhe-cruzer69/next.js/actions/runs/36959530435",
+      "workflow": "npm_and_yarn in /., /.github, /apps/bundle-analyzer, /evals/evals/agent-000-app-router-migration-simple, /evals/evals/agent-030-app-router-migration-hard, /examples/cms-buttercms, /examples/cms-sitecore-xmcloud, /examples/with-apollo, /examples/with-clerk, /examples/with-docker, /examples/with-docker-export-output, /examples/with-electron, /examples/with-electron-typescript, /examples/with-graphql-hooks, /examples/with-nhost-auth-realtime-graphql, /examples/with-paste-typescript, /examples/with-storybook...",
+      "run_id": 37235351912,
+      "html_url": "https://github.com/dhe-cruzer69/next.js/actions/runs/37235351912",
       "head_sha": "a84bfcf",
-      "created_at": "2026-10-02T03:17:40Z"
+      "created_at": "2026-10-04T21:15:25Z"
     },
     {
       "repo": "project-scaffold",
