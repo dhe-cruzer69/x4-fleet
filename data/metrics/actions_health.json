@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-04T23:25:24.378171+00:00",
-  "failing_repos": 15,
+  "generated_at": "2026-10-06T01:21:55.605446+00:00",
+  "failing_repos": 14,
   "failures": [
     {
       "repo": "arise-v9",
@@ -65,14 +65,6 @@
       "html_url": "https://github.com/dhe-cruzer69/x4-ai-security-scanner/actions/runs/35478744721",
       "head_sha": "ceca562",
       "created_at": "2026-09-20T00:25:44Z"
-    },
-    {
-      "repo": "x4-fleet",
-      "workflow": "CI",
-      "run_id": 37121024711,
-      "html_url": "https://github.com/dhe-cruzer69/x4-fleet/actions/runs/37121024711",
-      "head_sha": "58f635c",
-      "created_at": "2026-10-03T11:52:13Z"
     },
     {
       "repo": "x4-mcp-server-starter",
