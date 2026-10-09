@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-08T00:18:05.725202+00:00",
+  "generated_at": "2026-10-09T00:31:53.518152+00:00",
   "failing_repos": 14,
   "failures": [
     {
@@ -21,10 +21,10 @@
     {
       "repo": "next.js",
       "workflow": "npm_and_yarn in /., /.github, /apps/bundle-analyzer, /examples/cms-buttercms, /examples/cms-sitecore-xmcloud, /examples/with-apollo, /examples/with-clerk, /examples/with-docker, /examples/with-docker-export-output, /examples/with-electron, /examples/with-electron-typescript, /examples/with-graphql-hooks, /examples/with-nhost-auth-realtime-graphql, /examples/with-paste-typescript, /examples/with-storybook, /examples/with-typescript-graphql, /examples/with-vercel-blob, /examples/with-vitest, /packages/next...",
-      "run_id": 37538976063,
-      "html_url": "https://github.com/dhe-cruzer69/next.js/actions/runs/37538976063",
+      "run_id": 37853336095,
+      "html_url": "https://github.com/dhe-cruzer69/next.js/actions/runs/37853336095",
       "head_sha": "a84bfcf",
-      "created_at": "2026-10-06T22:11:28Z"
+      "created_at": "2026-10-08T22:25:08Z"
     },
     {
       "repo": "project-scaffold",
