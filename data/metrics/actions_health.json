@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-10T23:42:17.578752+00:00",
-  "failing_repos": 13,
+  "generated_at": "2026-10-11T23:48:43.655941+00:00",
+  "failing_repos": 15,
   "failures": [
     {
       "repo": "arise-v9",
@@ -21,10 +21,10 @@
     {
       "repo": "next.js",
       "workflow": "npm_and_yarn in /., /.github, /apps/bundle-analyzer, /examples/cms-buttercms, /examples/cms-sitecore-xmcloud, /examples/with-apollo, /examples/with-clerk, /examples/with-docker, /examples/with-docker-export-output, /examples/with-electron, /examples/with-electron-typescript, /examples/with-graphql-hooks, /examples/with-nhost-auth-realtime-graphql, /examples/with-paste-typescript, /examples/with-storybook, /examples/with-typescript-graphql, /examples/with-vercel-blob, /examples/with-vitest, /packages/next...",
-      "run_id": 38068837689,
-      "html_url": "https://github.com/dhe-cruzer69/next.js/actions/runs/38068837689",
+      "run_id": 38160278479,
+      "html_url": "https://github.com/dhe-cruzer69/next.js/actions/runs/38160278479",
       "head_sha": "a84bfcf",
-      "created_at": "2026-10-10T16:43:49Z"
+      "created_at": "2026-10-11T17:35:20Z"
     },
     {
       "repo": "project-scaffold",
@@ -59,6 +59,14 @@
       "created_at": "2026-09-20T00:25:44Z"
     },
     {
+      "repo": "x4-core",
+      "workflow": "CI",
+      "run_id": 38181212857,
+      "html_url": "https://github.com/dhe-cruzer69/x4-core/actions/runs/38181212857",
+      "head_sha": "ea4b81d",
+      "created_at": "2026-10-11T22:38:17Z"
+    },
+    {
       "repo": "x4-mcp-server-starter",
       "workflow": "CI",
       "run_id": 35478766049,
@@ -89,6 +97,14 @@
       "html_url": "https://github.com/dhe-cruzer69/x4-runtime/actions/runs/35488444286",
       "head_sha": "db70ea1",
       "created_at": "2026-09-20T04:09:57Z"
+    },
+    {
+      "repo": "x4-sandbox",
+      "workflow": "CI",
+      "run_id": 38181384824,
+      "html_url": "https://github.com/dhe-cruzer69/x4-sandbox/actions/runs/38181384824",
+      "head_sha": "fe718f9",
+      "created_at": "2026-10-11T22:40:56Z"
     },
     {
       "repo": "x4-sec",
