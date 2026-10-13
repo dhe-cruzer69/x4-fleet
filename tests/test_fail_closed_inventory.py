@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, ClassVar, Self
 
 from collectors import gh_inventory
 
@@ -17,12 +17,12 @@ class FakeResponse:
 
 
 class FakeClient:
-    calls: list[dict[str, Any]] = []
+    calls: ClassVar[list[dict[str, Any]]] = []
 
     def __init__(self, timeout: float) -> None:
         self.timeout = timeout
 
-    def __enter__(self) -> "FakeClient":
+    def __enter__(self) -> Self:
         return self
 
     def __exit__(self, *args: object) -> None:
