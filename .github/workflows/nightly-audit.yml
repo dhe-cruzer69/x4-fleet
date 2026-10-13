@@ -38,12 +38,14 @@ jobs:
       - name: Run regression tests
         run: python -m pytest -q
       - name: Collect complete inventory (private coverage required)
+        if: github.event_name != 'pull_request'
         env:
           GH_FLEET_TOKEN: ${{ secrets.X4_FLEET_TOKEN }}
           GITHUB_OWNER: dhe-cruzer69
         run: |
           python -m collectors.gh_inventory --owner dhe-cruzer69 --out data/inventory.json --min-private 1
       - name: Actions health (must succeed)
+        if: github.event_name != 'pull_request'
         env:
           GH_FLEET_TOKEN: ${{ secrets.X4_FLEET_TOKEN }}
           GITHUB_OWNER: dhe-cruzer69
@@ -51,8 +53,6 @@ jobs:
           python -m collectors.gh_actions_health --inventory data/inventory.json --token "$GH_FLEET_TOKEN"
       - name: Commit snapshots
         if: github.event_name != 'pull_request'
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
           git config user.name "x4-fleet[bot]"
           git config user.email "x4-fleet[bot]@users.noreply.github.com"
