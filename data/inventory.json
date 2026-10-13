@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-10-13T02:10:06.810895+00:00",
+  "generated_at": "2026-10-13T23:47:52.121839+00:00",
   "owner": "dhe-cruzer69",
   "total": 134,
   "public": 134,
   "private": 0,
   "archived": 0,
   "empty_stubs": 61,
-  "stale": 44,
+  "stale": 37,
   "repos": [
     {
       "name": "ReplitLM",
@@ -25,7 +25,7 @@
       "topics": [],
       "has_issues": false,
       "visibility": "public",
-      "staleness_days": 1099,
+      "staleness_days": 1100,
       "health": "stale"
     },
     {
@@ -45,7 +45,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 99,
+      "staleness_days": 100,
       "health": "stale"
     },
     {
@@ -65,7 +65,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 46,
+      "staleness_days": 47,
       "health": "stale"
     },
     {
@@ -85,7 +85,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -105,7 +105,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -125,7 +125,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -145,7 +145,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -165,7 +165,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -185,7 +185,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -205,7 +205,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -225,7 +225,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -245,7 +245,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -265,7 +265,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -285,7 +285,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -305,7 +305,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -325,7 +325,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -345,7 +345,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -365,7 +365,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -385,7 +385,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 46,
+      "staleness_days": 47,
       "health": "stale"
     },
     {
@@ -417,16 +417,16 @@
       "description": "",
       "language": "Shell",
       "stars": 0,
-      "open_issues": 0,
-      "size_kb": 1010,
+      "open_issues": 1,
+      "size_kb": 1018,
       "default_branch": "main",
-      "pushed_at": "2026-09-19T23:45:42Z",
+      "pushed_at": "2026-10-13T04:10:45Z",
       "html_url": "https://github.com/dhe-cruzer69/arise-v9",
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 23,
-      "health": "stale"
+      "staleness_days": 0,
+      "health": "ok"
     },
     {
       "name": "auto-fix-todo-test",
@@ -445,7 +445,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 97,
+      "staleness_days": 98,
       "health": "empty_stub"
     },
     {
@@ -465,7 +465,7 @@
       "topics": [],
       "has_issues": false,
       "visibility": "public",
-      "staleness_days": 80,
+      "staleness_days": 81,
       "health": "stale"
     },
     {
@@ -485,7 +485,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 95,
+      "staleness_days": 96,
       "health": "empty_stub"
     },
     {
@@ -505,7 +505,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 1,
+      "staleness_days": 2,
       "health": "ok"
     },
     {
@@ -525,7 +525,7 @@
       "topics": [],
       "has_issues": false,
       "visibility": "public",
-      "staleness_days": 80,
+      "staleness_days": 81,
       "health": "stale"
     },
     {
@@ -537,16 +537,16 @@
       "description": "",
       "language": "Shell",
       "stars": 0,
-      "open_issues": 0,
-      "size_kb": 10,
+      "open_issues": 1,
+      "size_kb": 11,
       "default_branch": "main",
-      "pushed_at": "2026-07-08T21:56:44Z",
+      "pushed_at": "2026-10-13T04:09:38Z",
       "html_url": "https://github.com/dhe-cruzer69/glowing-parakeet",
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 96,
-      "health": "stale"
+      "staleness_days": 0,
+      "health": "ok"
     },
     {
       "name": "ish",
@@ -565,7 +565,7 @@
       "topics": [],
       "has_issues": false,
       "visibility": "public",
-      "staleness_days": 77,
+      "staleness_days": 78,
       "health": "stale"
     },
     {
@@ -605,7 +605,7 @@
       "topics": [],
       "has_issues": false,
       "visibility": "public",
-      "staleness_days": 62,
+      "staleness_days": 63,
       "health": "stale"
     },
     {
@@ -625,7 +625,7 @@
       "topics": [],
       "has_issues": false,
       "visibility": "public",
-      "staleness_days": 33,
+      "staleness_days": 34,
       "health": "stale"
     },
     {
@@ -645,7 +645,7 @@
       "topics": [],
       "has_issues": false,
       "visibility": "public",
-      "staleness_days": 94,
+      "staleness_days": 95,
       "health": "stale"
     },
     {
@@ -665,7 +665,7 @@
       "topics": [],
       "has_issues": false,
       "visibility": "public",
-      "staleness_days": 76,
+      "staleness_days": 77,
       "health": "stale"
     },
     {
@@ -685,7 +685,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 46,
+      "staleness_days": 47,
       "health": "stale"
     },
     {
@@ -725,7 +725,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 56,
+      "staleness_days": 57,
       "health": "stale"
     },
     {
@@ -737,16 +737,16 @@
       "description": "",
       "language": "Shell",
       "stars": 0,
-      "open_issues": 0,
-      "size_kb": 953,
+      "open_issues": 1,
+      "size_kb": 954,
       "default_branch": "main",
-      "pushed_at": "2026-07-26T09:37:18Z",
+      "pushed_at": "2026-10-13T04:09:47Z",
       "html_url": "https://github.com/dhe-cruzer69/reimagined-potato",
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 78,
-      "health": "stale"
+      "staleness_days": 0,
+      "health": "ok"
     },
     {
       "name": "supabase",
@@ -825,7 +825,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -865,7 +865,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 22,
+      "staleness_days": 23,
       "health": "stale"
     },
     {
@@ -877,16 +877,16 @@
       "description": "Provider-agnostic AI abstraction layer \u2013 unified generate/stream/embed/tool/evaluate API across OpenAI, Anthropic, Gemini, local models with structured output and safety",
       "language": null,
       "stars": 0,
-      "open_issues": 0,
-      "size_kb": 4,
+      "open_issues": 1,
+      "size_kb": 7,
       "default_branch": "main",
-      "pushed_at": "2026-09-12T23:18:18Z",
+      "pushed_at": "2026-10-13T04:03:48Z",
       "html_url": "https://github.com/dhe-cruzer69/x4-ai",
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 30,
-      "health": "stale"
+      "staleness_days": 0,
+      "health": "ok"
     },
     {
       "name": "x4-ai-security-scanner",
@@ -925,7 +925,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -945,7 +945,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -965,7 +965,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -985,7 +985,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1005,7 +1005,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1025,7 +1025,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1045,7 +1045,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -1065,7 +1065,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1085,7 +1085,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1125,7 +1125,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1145,7 +1145,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1165,7 +1165,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1185,7 +1185,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1205,7 +1205,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1225,7 +1225,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1245,7 +1245,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 23,
+      "staleness_days": 24,
       "health": "stale"
     },
     {
@@ -1265,7 +1265,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1285,7 +1285,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -1297,15 +1297,15 @@
       "description": "Core runtime, shared primitives, config, logging, events, telemetry, auth & plugin system for the X4 ecosystem",
       "language": "Python",
       "stars": 0,
-      "open_issues": 2,
-      "size_kb": 70,
+      "open_issues": 1,
+      "size_kb": 77,
       "default_branch": "main",
-      "pushed_at": "2026-10-11T23:15:39Z",
+      "pushed_at": "2026-10-13T13:46:16Z",
       "html_url": "https://github.com/dhe-cruzer69/x4-core",
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 1,
+      "staleness_days": 0,
       "health": "ok"
     },
     {
@@ -1325,7 +1325,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1345,7 +1345,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1365,7 +1365,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1385,7 +1385,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1405,7 +1405,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1425,7 +1425,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 23,
+      "staleness_days": 24,
       "health": "stale"
     },
     {
@@ -1445,7 +1445,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -1465,7 +1465,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1485,7 +1485,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 21,
+      "staleness_days": 22,
       "health": "stale"
     },
     {
@@ -1505,7 +1505,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1525,7 +1525,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1537,15 +1537,15 @@
       "description": "Self-healing AI agent fleet: inventory, nightly audit, evidence ledger, auto-issue on staleness/CI failure, metrics snapshots. Data-collection + self-research core for X4.",
       "language": "Python",
       "stars": 0,
-      "open_issues": 2,
-      "size_kb": 112,
+      "open_issues": 3,
+      "size_kb": 154,
       "default_branch": "main",
-      "pushed_at": "2026-10-11T23:49:32Z",
+      "pushed_at": "2026-10-13T04:13:17Z",
       "html_url": "https://github.com/dhe-cruzer69/x4-fleet",
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 1,
+      "staleness_days": 0,
       "health": "ok"
     },
     {
@@ -1565,7 +1565,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1585,7 +1585,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1605,7 +1605,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -1625,7 +1625,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1645,7 +1645,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1665,7 +1665,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1685,7 +1685,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1705,7 +1705,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1745,7 +1745,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1765,7 +1765,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 23,
+      "staleness_days": 24,
       "health": "stale"
     },
     {
@@ -1777,16 +1777,16 @@
       "description": "Secure MCP gateway & registry \u2013 authentication, permissions, rate limiting, schema validation, audit and remote MCP support for agent tool ecosystems",
       "language": null,
       "stars": 0,
-      "open_issues": 0,
-      "size_kb": 5,
+      "open_issues": 1,
+      "size_kb": 7,
       "default_branch": "main",
-      "pushed_at": "2026-09-12T23:18:07Z",
+      "pushed_at": "2026-10-13T04:03:58Z",
       "html_url": "https://github.com/dhe-cruzer69/x4-mcp-gateway",
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 30,
-      "health": "stale"
+      "staleness_days": 0,
+      "health": "ok"
     },
     {
       "name": "x4-mcp-prod",
@@ -1805,7 +1805,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -1845,7 +1845,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 22,
+      "staleness_days": 23,
       "health": "stale"
     },
     {
@@ -1857,16 +1857,16 @@
       "description": "Persistent multi-layer agent memory \u2014 working, episodic, semantic, knowledge graph, privacy controls",
       "language": null,
       "stars": 0,
-      "open_issues": 0,
-      "size_kb": 3,
+      "open_issues": 1,
+      "size_kb": 5,
       "default_branch": "main",
-      "pushed_at": "2026-09-12T23:18:23Z",
+      "pushed_at": "2026-10-13T04:03:51Z",
       "html_url": "https://github.com/dhe-cruzer69/x4-memory",
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 30,
-      "health": "stale"
+      "staleness_days": 0,
+      "health": "ok"
     },
     {
       "name": "x4-memory-core",
@@ -1885,7 +1885,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -1905,7 +1905,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1925,7 +1925,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1945,7 +1945,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1965,7 +1965,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -1985,7 +1985,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2005,7 +2005,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 22,
+      "staleness_days": 23,
       "health": "stale"
     },
     {
@@ -2025,7 +2025,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 21,
+      "staleness_days": 22,
       "health": "stale"
     },
     {
@@ -2045,7 +2045,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2065,7 +2065,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2085,7 +2085,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2105,7 +2105,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2125,7 +2125,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2137,16 +2137,16 @@
       "description": "Evidence-first research agent \u2014 claim graphs, source ranking, contradiction detection, citation validation",
       "language": null,
       "stars": 0,
-      "open_issues": 0,
-      "size_kb": 3,
+      "open_issues": 1,
+      "size_kb": 5,
       "default_branch": "main",
-      "pushed_at": "2026-09-12T23:18:29Z",
+      "pushed_at": "2026-10-13T04:03:55Z",
       "html_url": "https://github.com/dhe-cruzer69/x4-research",
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 30,
-      "health": "stale"
+      "staleness_days": 0,
+      "health": "ok"
     },
     {
       "name": "x4-resolver",
@@ -2165,7 +2165,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2185,7 +2185,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2205,7 +2205,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 23,
+      "staleness_days": 24,
       "health": "stale"
     },
     {
@@ -2225,7 +2225,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 21,
+      "staleness_days": 22,
       "health": "stale"
     },
     {
@@ -2245,7 +2245,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 22,
+      "staleness_days": 23,
       "health": "stale"
     },
     {
@@ -2265,7 +2265,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 1,
+      "staleness_days": 2,
       "health": "ok"
     },
     {
@@ -2285,7 +2285,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2305,7 +2305,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2325,7 +2325,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 22,
+      "staleness_days": 23,
       "health": "stale"
     },
     {
@@ -2345,7 +2345,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -2365,7 +2365,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2385,7 +2385,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2405,7 +2405,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 22,
+      "staleness_days": 23,
       "health": "stale"
     },
     {
@@ -2425,7 +2425,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 9,
+      "staleness_days": 10,
       "health": "ok"
     },
     {
@@ -2445,7 +2445,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2465,7 +2465,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2485,7 +2485,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2505,7 +2505,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2525,7 +2525,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2545,7 +2545,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2565,7 +2565,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2585,7 +2585,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2605,7 +2605,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2625,7 +2625,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2645,7 +2645,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2665,7 +2665,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     },
     {
@@ -2685,7 +2685,7 @@
       "topics": [],
       "has_issues": true,
       "visibility": "public",
-      "staleness_days": 25,
+      "staleness_days": 26,
       "health": "empty_stub"
     }
   ]
