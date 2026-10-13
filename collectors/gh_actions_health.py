@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Detect failing GitHub Actions workflows and emit structured findings."""
 from __future__ import annotations
 
