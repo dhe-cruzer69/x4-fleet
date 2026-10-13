@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Authenticated GitHub repository inventory with private-coverage guardrails."""
 from __future__ import annotations
 
@@ -6,7 +5,7 @@ import argparse
 import json
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -84,7 +83,7 @@ def compute_staleness(pushed_at: str | None, now: datetime) -> int:
     if not pushed_at:
         return 999
     try:
-        dt = datetime.fromisoformat(pushed_at.replace("Z", "+00:00"))
+        dt = datetime.fromisoformat(pushed_at)
         return max(0, (now - dt).days)
     except ValueError:
         return 999
@@ -107,7 +106,7 @@ def main() -> None:
     if args.min_private < 0:
         parser.error("--min-private must be >= 0")
 
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     raw = list_repos(args.owner, args.token)
     items = []
     for repo in raw:
