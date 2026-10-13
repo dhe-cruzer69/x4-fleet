@@ -17,7 +17,7 @@ Remove failure suppression from required lint, test, fleet inventory, health-che
 | x4-research | [#1](https://github.com/dhe-cruzer69/x4-research/pull/1) | Lint/test false-green removal + regression test | CI passed |
 | x4-mcp-gateway | [#1](https://github.com/dhe-cruzer69/x4-mcp-gateway/pull/1) | Lint/test false-green removal + regression test | CI passed |
 | x4-fleet | [#3](https://github.com/dhe-cruzer69/x4-fleet/pull/3) | Authenticated private-aware inventory, fail-closed health collector/nightly workflow, regression tests | CI and nightly workflow passed on latest verified commit |
-| arise-v9 | [#16](https://github.com/dhe-cruzer69/arise-v9/pull/16) | Cloudflare project setup no longer suppresses failures; hardened Nginx smoke-test repair | Latest CI run pending after last commit at report preparation |
+| arise-v9 | [#16](https://github.com/dhe-cruzer69/arise-v9/pull/16) | Cloudflare project setup no longer suppresses failures; hardened Nginx smoke-test repair | [Latest CI passed](https://github.com/dhe-cruzer69/arise-v9/actions/runs/38345198778); production deploy skipped on PR |
 | glowing-parakeet | [#1](https://github.com/dhe-cruzer69/glowing-parakeet/pull/1) | Remove suppressed Python/TypeScript lint and type-check failures | CI passed |
 | reimagined-potato | [#1](https://github.com/dhe-cruzer69/reimagined-potato/pull/1) | Remove suppressed Python/TypeScript lint and type-check failures | CI passed |
 
