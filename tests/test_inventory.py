@@ -38,5 +38,5 @@ def test_compute_staleness_recent():
 
 
 def test_compute_staleness_missing():
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     assert compute_staleness(None, now) == 999
