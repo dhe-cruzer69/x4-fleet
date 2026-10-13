@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-"""GitHub full inventory collector for x4-fleet.
-
-Pulls every repository for an owner, extracts metadata, CI status hints,
-and writes a versioned inventory.json suitable for nightly diffs.
-"""
+"""Authenticated GitHub repository inventory with private-coverage guardrails."""
 from __future__ import annotations
 
 import argparse
@@ -28,24 +24,38 @@ def github_headers(token: str) -> dict[str, str]:
 
 
 def list_repos(owner: str, token: str) -> list[dict[str, Any]]:
+    """List repositories visible to the authenticated user, scoped to owner."""
     repos: list[dict[str, Any]] = []
     page = 1
     with httpx.Client(timeout=60.0) as client:
         while True:
-            r = client.get(
-                f"{API}/users/{owner}/repos",
+            response = client.get(
+                f"{API}/user/repos",
                 headers=github_headers(token),
-                params={"per_page": 100, "page": page, "type": "all", "sort": "updated"},
+                params={
+                    "per_page": 100,
+                    "page": page,
+                    "affiliation": "owner,collaborator,organization_member",
+                    "sort": "updated",
+                    "direction": "desc",
+                },
             )
-            r.raise_for_status()
-            batch = r.json()
+            response.raise_for_status()
+            batch = response.json()
             if not batch:
                 break
-            repos.extend(batch)
-            page += 1
-            if page > 20:  # safety
+            repos.extend(
+                repo for repo in batch
+                if repo.get("owner", {}).get("login", "").casefold() == owner.casefold()
+            )
+            if len(batch) < 100:
                 break
-    return repos
+            page += 1
+
+    unique: dict[int, dict[str, Any]] = {}
+    for repo in repos:
+        unique[repo["id"]] = repo
+    return list(unique.values())
 
 
 def summarize(repo: dict[str, Any]) -> dict[str, Any]:
@@ -75,8 +85,8 @@ def compute_staleness(pushed_at: str | None, now: datetime) -> int:
         return 999
     try:
         dt = datetime.fromisoformat(pushed_at.replace("Z", "+00:00"))
-        return (now - dt).days
-    except Exception:
+        return max(0, (now - dt).days)
+    except ValueError:
         return 999
 
 
@@ -84,41 +94,58 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="X4 Fleet GitHub inventory collector")
     parser.add_argument("--owner", default=os.environ.get("GITHUB_OWNER", "dhe-cruzer69"))
     parser.add_argument("--out", default="data/inventory.json")
-    parser.add_argument("--token", default=os.environ.get("GITHUB_TOKEN"))
+    parser.add_argument("--token", default=os.environ.get("GH_FLEET_TOKEN"))
+    parser.add_argument(
+        "--min-private", type=int, default=1,
+        help="Fail closed when fewer than this many private repositories are visible.",
+    )
     args = parser.parse_args()
 
     if not args.token:
-        print("GITHUB_TOKEN required", file=sys.stderr)
-        sys.exit(1)
+        print("GH_FLEET_TOKEN required; refusing to publish incomplete inventory.", file=sys.stderr)
+        raise SystemExit(1)
+    if args.min_private < 0:
+        parser.error("--min-private must be >= 0")
 
     now = datetime.now(timezone.utc)
     raw = list_repos(args.owner, args.token)
     items = []
-    for r in raw:
-        s = summarize(r)
-        s["staleness_days"] = compute_staleness(s["pushed_at"], now)
-        s["health"] = "stale" if s["staleness_days"] > 14 else "ok"
-        if s["size_kb"] == 0 and not s["fork"]:
-            s["health"] = "empty_stub"
-        items.append(s)
+    for repo in raw:
+        item = summarize(repo)
+        item["staleness_days"] = compute_staleness(item["pushed_at"], now)
+        item["health"] = "stale" if item["staleness_days"] > 14 else "ok"
+        if item["size_kb"] == 0 and not item["fork"]:
+            item["health"] = "empty_stub"
+        items.append(item)
 
     inventory = {
+        "schema_version": "1.0.0",
         "generated_at": now.isoformat(),
         "owner": args.owner,
         "total": len(items),
-        "public": sum(1 for i in items if not i["private"]),
-        "private": sum(1 for i in items if i["private"]),
-        "archived": sum(1 for i in items if i["archived"]),
-        "empty_stubs": sum(1 for i in items if i["health"] == "empty_stub"),
-        "stale": sum(1 for i in items if i["health"] == "stale"),
-        "repos": sorted(items, key=lambda x: x["name"]),
+        "public": sum(1 for item in items if not item["private"]),
+        "private": sum(1 for item in items if item["private"]),
+        "archived": sum(1 for item in items if item["archived"]),
+        "empty_stubs": sum(1 for item in items if item["health"] == "empty_stub"),
+        "stale": sum(1 for item in items if item["health"] == "stale"),
+        "repos": sorted(items, key=lambda item: item["name"].casefold()),
     }
+
+    if inventory["private"] < args.min_private:
+        print(
+            f"INCOMPLETE INVENTORY: private={inventory['private']} < "
+            f"required={args.min_private}; check X4_FLEET_TOKEN permissions.",
+            file=sys.stderr,
+        )
+        raise SystemExit(2)
 
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(inventory, indent=2) + "\n", encoding="utf-8")
-    print(f"Wrote {len(items)} repos → {out}")
-    print(f"  empty_stubs={inventory['empty_stubs']}  stale={inventory['stale']}")
+    print(
+        f"Wrote {inventory['total']} repositories to {out}; "
+        f"public={inventory['public']} private={inventory['private']}"
+    )
 
 
 if __name__ == "__main__":
