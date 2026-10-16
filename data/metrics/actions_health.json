@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15T23:09:45.891047+00:00",
+  "generated_at": "2026-10-16T22:56:14.760226+00:00",
   "failing_repos": 14,
   "failures": [
     {
@@ -28,11 +28,11 @@
     },
     {
       "repo": "next.js",
-      "workflow": "npm_and_yarn in /., /.github, /examples/cms-buttercms, /examples/cms-payload, /examples/cms-sitecore-xmcloud, /examples/with-electron, /examples/with-electron-typescript, /examples/with-joi, /examples/with-nhost-auth-realtime-graphql, /examples/with-paste-typescript, /examples/with-typescript-graphql, /packages/next, /packages/next-codemod, /packages/next-codemod/bin/__testfixtures__/change-turbo-to-turbopack, /packages/next-codemod/bin/__testfixtures__/geo-ip-usage, /packages/next-codemod/bin/__testfixt...",
-      "run_id": 38812812205,
-      "html_url": "https://github.com/dhe-cruzer69/next.js/actions/runs/38812812205",
+      "workflow": "npm_and_yarn in /., /.github, /apps/bundle-analyzer, /examples/cms-buttercms, /examples/cms-payload, /examples/with-electron, /examples/with-electron-typescript, /examples/with-joi, /examples/with-nhost-auth-realtime-graphql, /examples/with-paste-typescript, /examples/with-typescript-graphql, /packages/next, /packages/next-codemod, /packages/next-codemod/bin/__testfixtures__/change-turbo-to-turbopack, /packages/next-codemod/bin/__testfixtures__/geo-ip-usage, /packages/next-codemod/bin/__testfixtures__/ne...",
+      "run_id": 38890018605,
+      "html_url": "https://github.com/dhe-cruzer69/next.js/actions/runs/38890018605",
       "head_sha": "a84bfcf",
-      "created_at": "2026-10-15T21:49:58Z"
+      "created_at": "2026-10-16T10:51:54Z"
     },
     {
       "repo": "project-scaffold",
