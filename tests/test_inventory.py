@@ -1,7 +1,7 @@
 """Unit tests for x4-fleet collectors."""
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from collectors.gh_inventory import compute_staleness, summarize
 
@@ -32,11 +32,11 @@ def test_summarize_minimal():
 
 
 def test_compute_staleness_recent():
-    now = datetime(2026, 10, 3, tzinfo=timezone.utc)
+    now = datetime(2026, 10, 3, tzinfo=UTC)
     days = compute_staleness("2026-09-23T23:49:01Z", now)
     assert 9 <= days <= 11
 
 
 def test_compute_staleness_missing():
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     assert compute_staleness(None, now) == 999

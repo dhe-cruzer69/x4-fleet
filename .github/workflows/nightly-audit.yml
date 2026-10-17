@@ -2,45 +2,62 @@ name: Nightly Fleet Audit
 
 on:
   schedule:
-    - cron: "30 20 * * *"   # 02:00 IST (UTC+5:30)
+    - cron: "30 20 * * *" # 02:00 IST
   workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/nightly-audit.yml"
+      - "collectors/**"
+      - "tests/**"
+      - "pyproject.toml"
 
 permissions:
   contents: write
-  issues: write
+
+concurrency:
+  group: fleet-audit-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   audit:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
-      - name: Install
+      - name: Install project and test dependencies
         run: |
-          pip install -e ".[dev]"
-
-      - name: Collect inventory
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+          python -m pip check
+      - name: Run regression tests
+        run: python -m pytest -q
+      - name: Collect complete inventory (private coverage required)
+        if: github.event_name != 'pull_request'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_FLEET_TOKEN: ${{ secrets.X4_FLEET_TOKEN }}
           GITHUB_OWNER: dhe-cruzer69
         run: |
-          python -m collectors.gh_inventory --owner dhe-cruzer69 --out data/inventory.json
-
-      - name: Actions health
+          python -m collectors.gh_inventory --owner dhe-cruzer69 --out data/inventory.json --min-private 1
+      - name: Actions health (must succeed)
+        if: github.event_name != 'pull_request'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_FLEET_TOKEN: ${{ secrets.X4_FLEET_TOKEN }}
+          GITHUB_OWNER: dhe-cruzer69
         run: |
-          python -m collectors.gh_actions_health --inventory data/inventory.json || true
-
+          python -m collectors.gh_actions_health --inventory data/inventory.json --token "$GH_FLEET_TOKEN"
       - name: Commit snapshots
+        if: github.event_name != 'pull_request'
         run: |
           git config user.name "x4-fleet[bot]"
           git config user.email "x4-fleet[bot]@users.noreply.github.com"
           git add data/
-          git diff --staged --quiet || git commit -m "chore(fleet): nightly inventory + health snapshot"
-          git push || true
+          if ! git diff --staged --quiet; then
+            git commit -m "chore(fleet): nightly inventory + health snapshot"
+            git push origin HEAD
+          fi
