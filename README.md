@@ -40,6 +40,28 @@ x4-fleet/
     └── weekly-report.yml       # Monday fleet report issue
 ```
 
+<!-- X4-APEX-DIAGRAM-START:x4-fleet -->
+
+```mermaid
+flowchart LR
+    TOKEN[GitHub Token] --> API[GitHub API]
+    API --> COLLECT[Repository Inventory Collector]
+    COLLECT --> VALIDATE[Coverage and Schema Checks]
+    VALIDATE -->|pass| SNAP[(Inventory Snapshot)]
+    VALIDATE -->|fail| STOP[Fail with Diagnostic]
+    SNAP --> METRICS[Daily Metrics and Evidence]
+    API --> HEALTH[Actions Health Collector]
+    HEALTH --> REPORT[Nightly Audit]
+    SNAP --> REPORT
+    REPORT -->|anomaly| ISSUE[Create or Update Issue]
+    REPORT --> WEEKLY[Weekly Fleet Report]
+    POLICY[Autonomy Policy] -. constrains .-> HEAL[Optional Repair Proposal]
+    HEALTH --> HEAL
+    SNAP -. source of truth .-> REPORT
+```
+
+<!-- X4-APEX-DIAGRAM-END:x4-fleet -->
+
 ## Quick Start
 
 ```bash
