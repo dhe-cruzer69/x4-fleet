@@ -20,24 +20,7 @@ One repo that replaces 30+ stub repos. Collects inventory + metrics for every re
 
 > Status: architecture documentation; implementation and deployment claims require independent verification.
 
-```mermaid
-flowchart LR
-  Schedule[Scheduled audit] --> Collector[GitHub inventory collector]
-  Collector --> Pages{All pages retrieved?}
-  Pages -->|no| Incomplete[Mark inventory incomplete]
-  Pages -->|yes| Normalize[Normalize repository records]
-  Normalize --> Validate{Schema and count checks}
-  Validate -->|fail| Stop[Fail closed + evidence]
-  Validate -->|pass| Snapshot[(Versioned inventory snapshot)]
-  Snapshot --> Compare[Compare with prior snapshot]
-  Compare --> Findings[Actionable findings]
-  Findings --> Issue[Create or update rolling issue]
-  Findings --> Report[Weekly audit report]
-  Incomplete --> Report
-  Stop --> Report
-```
 **Evidence note:** Pagination, completeness thresholds, issue deduplication, and schedule behavior must be confirmed from the current workflow and tests.
-
 
 ```
 x4-fleet/
