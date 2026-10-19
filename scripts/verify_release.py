@@ -11,7 +11,7 @@ from typing import Any
 DIGEST_RE = re.compile(r"^sha256:[0-9a-f]{64}$")
 COMMIT_RE = re.compile(r"^(?:[0-9a-f]{40}|[0-9a-f]{64})$")
 IMAGE_RE = re.compile(
-    r"^ghcr\\.io/[a-z0-9]+(?:[._-][a-z0-9]+)*/"
+    r"^ghcr\.io/[a-z0-9]+(?:[._-][a-z0-9]+)*/"
     r"[a-z0-9]+(?:[._-][a-z0-9]+)*(?:/[a-z0-9]+(?:[._-][a-z0-9]+)*)*$"
 )
 REQUIRED = {
