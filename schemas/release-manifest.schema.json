@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/dhe-cruzer69/x4-fleet/schemas/release-manifest.schema.json",
+  "title": "X4 BEASTMODE Release Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "repository",
+    "commit_sha",
+    "workflow_run_id",
+    "workflow_attempt",
+    "image",
+    "image_digest",
+    "sbom_digest",
+    "quality_status",
+    "security_status",
+    "integration_status",
+    "created_at_utc"
+  ],
+  "properties": {
+    "schema_version": { "const": "1" },
+    "repository": { "type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$" },
+    "commit_sha": { "type": "string", "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$" },
+    "workflow_run_id": { "type": "integer", "minimum": 1 },
+    "workflow_attempt": { "type": "integer", "minimum": 1 },
+    "image": { "type": "string", "pattern": "^ghcr\\.io/[a-z0-9]+(?:[._-][a-z0-9]+)*/[a-z0-9]+(?:[._-][a-z0-9]+)*(?:/[a-z0-9]+(?:[._-][a-z0-9]+)*)*$" },
+    "image_digest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "sbom_digest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "quality_status": { "const": "PASS" },
+    "security_status": { "const": "PASS" },
+    "integration_status": { "const": "PASS" },
+    "created_at_utc": { "type": "string", "format": "date-time", "pattern": "Z$" }
+  }
+}
