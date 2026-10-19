@@ -1,0 +1,57 @@
+name: X4 BEASTMODE Contracts
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "schemas/**"
+      - "scripts/**"
+      - "tests/test_beastmode_contracts.py"
+      - ".github/workflows/beastmode-contracts.yml"
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "schemas/**"
+      - "scripts/**"
+      - "tests/test_beastmode_contracts.py"
+      - ".github/workflows/beastmode-contracts.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: beastmode-contracts-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        # Production hardening: replace action tags with reviewed full commit SHAs.
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+        # Production hardening: replace action tags with reviewed full commit SHAs.
+      - name: Install project test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+          python -m pip check
+      - name: Run BEASTMODE adversarial tests
+        run: python -m pytest -q tests/test_beastmode_contracts.py
+      - name: Validate JSON schemas
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          for path in sorted(Path("schemas").glob("*.schema.json")):
+              json.loads(path.read_text(encoding="utf-8"))
+              print(f"JSON syntax valid: {path}")
+          PY
