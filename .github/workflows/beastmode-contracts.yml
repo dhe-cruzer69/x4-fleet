@@ -8,6 +8,7 @@ on:
       - "schemas/**"
       - "scripts/**"
       - "tests/test_beastmode_contracts.py"
+      - "pyproject.toml"
       - ".github/workflows/beastmode-contracts.yml"
   push:
     branches: [main]
@@ -16,6 +17,7 @@ on:
       - "schemas/**"
       - "scripts/**"
       - "tests/test_beastmode_contracts.py"
+      - "pyproject.toml"
       - ".github/workflows/beastmode-contracts.yml"
   workflow_dispatch:
 
@@ -33,12 +35,10 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
-        # Production hardening: replace action tags with reviewed full commit SHAs.
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-        # Production hardening: replace action tags with reviewed full commit SHAs.
       - name: Install project test dependencies
         run: |
           python -m pip install --upgrade pip
@@ -46,12 +46,15 @@ jobs:
           python -m pip check
       - name: Run BEASTMODE adversarial tests
         run: python -m pytest -q tests/test_beastmode_contracts.py
-      - name: Validate JSON schemas
+      - name: Validate JSON schemas and representative instances
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
+          from jsonschema import Draft202012Validator, FormatChecker
           for path in sorted(Path("schemas").glob("*.schema.json")):
-              json.loads(path.read_text(encoding="utf-8"))
-              print(f"JSON syntax valid: {path}")
+              schema = json.loads(path.read_text(encoding="utf-8"))
+              Draft202012Validator.check_schema(schema)
+              Draft202012Validator(schema, format_checker=FormatChecker())
+              print(f"Draft 2020-12 schema valid: {path}")
           PY
