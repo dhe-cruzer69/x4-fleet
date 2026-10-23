@@ -4,20 +4,7 @@
   "title": "X4 BEASTMODE Release Manifest",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "schema_version",
-    "repository",
-    "commit_sha",
-    "workflow_run_id",
-    "workflow_attempt",
-    "image",
-    "image_digest",
-    "sbom_digest",
-    "quality_status",
-    "security_status",
-    "integration_status",
-    "created_at_utc"
-  ],
+  "required": ["schema_version", "repository", "commit_sha", "workflow_run_id", "workflow_attempt", "image", "image_digest", "sbom_digest", "quality_status", "security_status", "integration_status", "created_at_utc"],
   "properties": {
     "schema_version": { "const": "1" },
     "repository": { "type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$" },
@@ -30,6 +17,10 @@
     "quality_status": { "const": "PASS" },
     "security_status": { "const": "PASS" },
     "integration_status": { "const": "PASS" },
-    "created_at_utc": { "type": "string", "format": "date-time", "pattern": "Z$" }
+    "created_at_utc": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$"
+    }
   }
 }
