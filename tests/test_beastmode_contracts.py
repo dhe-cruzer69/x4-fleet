@@ -13,6 +13,18 @@ sys.path.insert(0, str(ROOT))
 
 from scripts.fleet_scorecard import build_scorecard  # noqa: E402
 from scripts.verify_release import validate_manifest  # noqa: E402
+from scripts.verify_receipt import validate_receipt  # noqa: E402
+
+DIGEST = "sha256:" + "d" * 64
+RECEIPT = {
+    "schema_version": "1", "deployment_id": "dep-1", "release_run_id": 123,
+    "target": "staging", "status": "succeeded", "requested_digest": DIGEST,
+    "observed_digest": DIGEST, "source_commit": "a" * 40,
+    "started_at_utc": "2026-10-19T12:00:00Z",
+    "finished_at_utc": "2026-10-19T12:01:00Z",
+    "readiness": {"http": 200, "healthy": True},
+    "rollback": {"attempted": False, "status": "not_attempted"},
+}
 
 VALID = {
     "schema_version": "1",
@@ -81,6 +93,18 @@ def test_schema_documents_are_valid_and_validate_release_instance():
         validator = Draft202012Validator(schema, format_checker=FormatChecker())
         if path.name == "release-manifest.schema.json":
             assert list(validator.iter_errors(VALID)) == []
+        if path.name == "deployment-receipt.schema.json":
+            assert list(validator.iter_errors(RECEIPT)) == []
+
+
+def test_receipt_rejects_success_with_digest_mismatch():
+    bad = dict(RECEIPT, observed_digest="sha256:" + "e" * 64)
+    assert any("must equal" in error for error in validate_receipt(bad))
+
+
+def test_receipt_rejects_unverified_rollback():
+    bad = dict(RECEIPT, rollback={"attempted": False, "status": "verified"})
+    assert any("attempted=true" in error or "requires attempted=true" in error for error in validate_receipt(bad))
 
 
 def test_scorecard_does_not_invent_a_score():
