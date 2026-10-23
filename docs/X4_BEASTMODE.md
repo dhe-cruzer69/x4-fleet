@@ -37,7 +37,7 @@ flowchart TD
   Review -->|Approved| Branch[Isolated change branch]
   Branch --> CI[Tests and security checks]
   CI -->|Pass| PR[Pull request]
-  CI -->|Fail| Stop[Stop; preserve evidence]
+  CI -->|Fail| Stop[Stop; preserve failure evidence]
   PR --> Merge[Human-approved merge only]
 ```
 
@@ -49,8 +49,8 @@ flowchart LR
   B --> T[Integration-test exact candidate]
   T --> S[Scan candidate and generate SBOM]
   S --> P[Publish same candidate artifact]
-  P --> D[Read registry digest independently]
-  D --> C{Digest matches tested artifact?}
+  P --> D[Resolve published reference from registry independently]
+  D --> C{Observed digest matches tested artifact?}
   C -- No --> F[Fail release; no manifest]
   C -- Yes --> M[Create and verify release manifest]
   M --> A[Verify exact run provenance and approval]
@@ -61,7 +61,7 @@ flowchart LR
   RB --> E[Write honest failure/rollback receipt]
 ```
 
-**Release invariant:** build once → test/scan that exact artifact → publish that same artifact → independently observe the published digest → deploy by digest → independently observe the running image and readiness → only then record success.
+**Release invariant:** build once → test/scan that exact artifact → publish that same artifact → independently resolve and observe the published digest → deploy by digest → independently observe the running image and readiness → only then record success.
 
 ## Evidence vocabulary
 
@@ -69,6 +69,7 @@ flowchart LR
 - `CORRELATED`: multiple observations appear related but causality is not established.
 - `HYPOTHESIS`: plausible explanation requiring validation.
 - `VALIDATED`: an explicit check passed and its method/result is recorded.
+- `PASS`: a gate result recorded only after the named check actually completed successfully, with run identity and result evidence. `PASS` is not interchangeable with `VALIDATED`: PASS is the outcome of one gate; VALIDATED describes the evidence-backed verification state of a claim or invariant.
 - `UNKNOWN`: evidence is missing or incomplete.
 - `FAIL`: a required invariant was violated.
 
