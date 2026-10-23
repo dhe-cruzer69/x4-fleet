@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/dhe-cruzer69/x4-fleet/schemas/deployment-receipt.schema.json",
+  "title": "X4 BEASTMODE Deployment Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "deployment_id", "release_run_id", "target", "status", "requested_digest", "observed_digest", "source_commit", "started_at_utc", "finished_at_utc", "readiness", "rollback"],
+  "properties": {
+    "schema_version": { "const": "1" },
+    "deployment_id": { "type": "string", "minLength": 1 },
+    "release_run_id": { "type": "integer", "minimum": 1 },
+    "target": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["blocked", "deploying", "succeeded", "failed"] },
+    "requested_digest": { "type": ["string", "null"], "pattern": "^sha256:[a-f0-9]{64}$" },
+    "observed_digest": { "type": ["string", "null"], "pattern": "^sha256:[a-f0-9]{64}$" },
+    "source_commit": { "type": ["string", "null"], "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$" },
+    "started_at_utc": { "type": "string", "format": "date-time", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$" },
+    "finished_at_utc": { "type": ["string", "null"], "format": "date-time", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$" },
+    "readiness": { "type": ["object", "null"] },
+    "rollback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["attempted", "status"],
+      "properties": {
+        "attempted": { "type": "boolean" },
+        "status": { "enum": ["not_attempted", "attempted", "verified", "failed"] },
+        "observed_digest": { "type": ["string", "null"], "pattern": "^sha256:[a-f0-9]{64}$" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "const": "not_attempted" } }, "required": ["status"] },
+          "then": { "properties": { "attempted": { "const": false } } }
+        },
+        {
+          "if": { "properties": { "status": { "enum": ["attempted", "verified", "failed"] } }, "required": ["status"] },
+          "then": { "properties": { "attempted": { "const": true } } }
+        },
+        {
+          "if": { "properties": { "status": { "const": "verified" } }, "required": ["status"] },
+          "then": { "properties": { "observed_digest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" } } }
+        }
+      ]
+    },
+    "error": { "type": ["string", "null"], "maxLength": 600 }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "succeeded" } }, "required": ["status"] },
+      "then": {
+        "properties": {
+          "requested_digest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+          "observed_digest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+          "finished_at_utc": { "type": "string", "format": "date-time", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$" },
+          "readiness": { "type": "object" }
+        }
+      }
+    }
+  ],
+  "description": "JSON Schema validates field shapes and rollback-state consistency. Cross-field equality of requested_digest and observed_digest for succeeded receipts MUST additionally be enforced by scripts/verify_receipt.py; Draft 2020-12 has no standard keyword for comparing arbitrary sibling property values."
+}

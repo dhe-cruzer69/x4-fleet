@@ -98,3 +98,27 @@ Nothing is "done" until inventory runs green nightly, zero repos stale >14d, zer
 ## License
 
 Apache-2.0
+
+
+## X4 BEASTMODE Engineering Standard
+
+The BEASTMODE contracts are a **reviewable design and local-validation layer**, not a claim of production deployment.
+
+- [Engineering standard and architecture](docs/X4_BEASTMODE.md)
+- [Detailed component architecture](docs/architecture.md)
+- [Threat model and fail-closed controls](docs/threat-model.md)
+- [Immutable release and deployment contract](docs/release-contract.md)
+- [Release manifest schema](schemas/release-manifest.schema.json)
+- [Deployment receipt schema](schemas/deployment-receipt.schema.json)
+
+### Local read-only validation
+
+```bash
+python -m pytest -q tests/test_beastmode_contracts.py
+python scripts/fleet_scorecard.py --inventory data/inventory.json --out -
+python scripts/verify_release.py path/to/release-manifest.json
+```
+
+The scorecard intentionally reports `score: null` when a defensible scoring policy is not established. The release validator checks schema invariants; it does **not** prove workflow provenance, gate execution, image publication, or deployment. Those require independent evidence.
+
+The added `.github/workflows/beastmode-contracts.yml` is a read-only contract-check workflow. Third-party actions still require reviewed full-SHA pinning before this pipeline is used as a protected production release gate. No release publication or deployment workflow is enabled by this change.
