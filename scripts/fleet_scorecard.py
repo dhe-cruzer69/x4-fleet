@@ -3,10 +3,24 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+UTC_TIMESTAMP_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$")
+
+
+def valid_utc_timestamp(value: Any) -> bool:
+    """Accept only RFC3339-shaped UTC timestamps ending in Z with valid calendar values."""
+    if not isinstance(value, str) or not UTC_TIMESTAMP_RE.fullmatch(value):
+        return False
+    try:
+        datetime.fromisoformat(value[:-1] + "+00:00")
+    except ValueError:
+        return False
+    return True
 
 
 def build_scorecard(data: Any) -> dict[str, Any]:
@@ -17,48 +31,67 @@ def build_scorecard(data: Any) -> dict[str, Any]:
     if not isinstance(repos, list):
         raise ValueError("inventory field 'repos' must be an array")
 
-    names: set[str] = set()
-    duplicates: list[str] = []
     invalid: list[str] = []
-    archived = private = stale_unknown = 0
+    duplicates: list[str] = []
+    names: set[str] = set()
+    archived = private = missing_push_timestamp = 0
+
+    generated_at = data.get("generated_at")
+    if not valid_utc_timestamp(generated_at):
+        invalid.append("generated_at must be a valid RFC3339 UTC timestamp ending in Z")
+
+    declared_total = data.get("total")
+    if type(declared_total) is not int or declared_total < 0:
+        invalid.append("total must be a non-negative integer")
+    elif declared_total != len(repos):
+        invalid.append(f"inventory is incomplete: total={declared_total}, collected={len(repos)}")
+
     for index, repo in enumerate(repos):
         if not isinstance(repo, dict):
             invalid.append(f"repos[{index}] is not an object")
             continue
-        name = repo.get("full_name") or repo.get("name")
-        if not isinstance(name, str) or not name.strip():
-            invalid.append(f"repos[{index}] has no valid name")
+
+        name = repo.get("full_name")
+        if not isinstance(name, str) or not name.strip() or "/" not in name:
+            invalid.append(f"repos[{index}] has no valid full_name")
             continue
         if name in names:
             duplicates.append(name)
         names.add(name)
-        if type(repo.get("archived", False)) is not bool:
+
+        if type(repo.get("archived")) is not bool:
             invalid.append(f"{name}: archived must be boolean")
-        elif repo.get("archived", False):
+        elif repo["archived"]:
             archived += 1
+
         if "private" in repo:
             if type(repo["private"]) is not bool:
                 invalid.append(f"{name}: private must be boolean")
             elif repo["private"]:
                 private += 1
-        if not repo.get("pushed_at"):
-            stale_unknown += 1
 
-    complete = not invalid and not duplicates and bool(data.get("generated_at"))
+        pushed_at = repo.get("pushed_at")
+        if pushed_at is None:
+            missing_push_timestamp += 1
+        elif not valid_utc_timestamp(pushed_at):
+            invalid.append(f"{name}: pushed_at must be a valid RFC3339 UTC timestamp or null")
+
+    complete = not invalid and not duplicates
     return {
         "schema_version": "1",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
-        "source_generated_at": data.get("generated_at"),
+        "source_generated_at": generated_at,
         "status": "OBSERVED" if complete else "UNKNOWN",
         "total_records": len(repos),
+        "declared_total": declared_total,
         "unique_named_repositories": len(names),
         "archived_repositories": archived,
         "private_repositories_observed": private,
-        "missing_push_timestamp": stale_unknown,
+        "missing_push_timestamp": missing_push_timestamp,
         "duplicate_names": sorted(set(duplicates)),
         "validation_errors": invalid,
         "score": None,
-        "score_reason": "No percentage score: required policy thresholds and complete source provenance are not established by this input alone.",
+        "score_reason": "No percentage score: policy thresholds and complete source provenance are not established by this input alone.",
     }
 
 
