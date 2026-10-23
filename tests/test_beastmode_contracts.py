@@ -6,13 +6,13 @@ import sys
 from datetime import UTC, datetime
 from pathlib import Path
 
-from jsonschema import Draft202012Validator
+from jsonschema import Draft202012Validator, FormatChecker
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from scripts.fleet_scorecard import build_scorecard
-from scripts.verify_release import validate_manifest
+from scripts.fleet_scorecard import build_scorecard  # noqa: E402
+from scripts.verify_release import validate_manifest  # noqa: E402
 
 VALID = {
     "schema_version": "1",
@@ -74,10 +74,13 @@ def test_manifest_rejects_mutable_tag_and_wrong_registry():
                    for error in validate_manifest(dict(VALID, image=image)))
 
 
-def test_schema_documents_are_valid_draft_2020_12_schemas():
+def test_schema_documents_are_valid_and_validate_release_instance():
     for path in sorted((ROOT / "schemas").glob("*.schema.json")):
         schema = json.loads(path.read_text(encoding="utf-8"))
         Draft202012Validator.check_schema(schema)
+        validator = Draft202012Validator(schema, format_checker=FormatChecker())
+        if path.name == "release-manifest.schema.json":
+            assert list(validator.iter_errors(VALID)) == []
 
 
 def test_scorecard_does_not_invent_a_score():
