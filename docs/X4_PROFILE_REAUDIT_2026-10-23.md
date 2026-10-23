@@ -19,7 +19,7 @@
 
 ### x4-fleet PR #6
 URL: https://github.com/dhe-cruzer69/x4-fleet/pull/6  
-Latest branch commit at snapshot: `a83644ccab8fe79df0a9af6f6d5c24eec911e41d`.
+Latest tested source-code commit before subsequent report-only commits: `a83644ccab8fe79df0a9af6f6d5c24eec911e41d`.
 
 Applied changes: strict RFC3339 UTC timestamp schema/runtime checks; inventory completeness and required-field validation; mutable image-tag regression tests; Draft 2020-12 schema validation; receipt validator for requested/observed digest equality and rollback-state invariants; PASS evidence vocabulary; independent registry digest re-resolution in the pipeline diagram; full-SHA pins for checkout/setup-python in the new contract workflow.
 
