@@ -4,7 +4,7 @@
 **Snapshot:** 2026-10-23  
 **Verdict:** PARTIALLY REMEDIATED — PROFILE-WIDE AUDIT, RENAMES, MERGES AND DEPLOYMENTS NOT COMPLETE.
 
-> This report documents observed evidence only. It is not a final security certification. The inventory is complete for the 100 records returned by the connected GitHub listing, but source-level inspection is limited to selected repositories/workflows. The rest are explicitly UNKNOWN.
+> This report documents observed evidence only. It is not a final security certification. The listing returned 100 records and offset 100 returned zero, but it is **not proven exhaustive**: source searches and direct README lookups found additional owned repositories absent from that list, including x4-skills, x4-runtime, x4-obs, x4-sec, x4-ai-security-scanner, x4-agent-observability, x4-local-ai-runtime, x4-agent-skills-hub, x4-mcpgen, x4-mcp-server-starter, x4-memory-core, x4-eval-harness and x4-mcp-prod. The profile inventory is therefore incomplete. Source-level inspection is limited to selected repositories/workflows; the rest are explicitly UNKNOWN.
 
 ## 1. Inventory verdict
 
@@ -219,3 +219,65 @@ Never print secret values or run write-capable workflows solely to audit them.
 A profile-wide PASS requires complete source/workflow enumeration, full-SHA pinning and upstream verification for every action, native tests/security scans on each final commit, reviewed least-privilege write workflows, collision-free rename mapping, individually approved merges/deployments, observed runtime health and immutable artifact identity, verified rollback evidence, and a post-change inventory comparison.
 
 **Current verdict: INCOMPLETE / UNKNOWN.** This dossier is intentionally interim; it does not claim that all 100 repositories have been deeply audited or that the whole profile is secured.
+
+
+## 10. Additional X4 ecosystem blueprints — README-derived, not production validation
+
+The following architecture descriptions are derived from the repository READMEs inspected in this pass. They document stated design intent, not proof that all listed features are implemented, secure or tested.
+
+### Core runtime and agent control plane
+
+- **x4-core** — README describes shared configuration, logging, events, telemetry, authentication, permissions, plugins and schemas. Intended dependency foundation for agents, memory, sandbox and MCP. Entry example imports Config, Logger, EventBus and Permission from x4.core. Required audit: validate permission enforcement, schema evolution, logging redaction and API compatibility.
+- **x4-agents** — README describes multi-agent orchestration with task graphs, policy engine, approvals, sandboxed tools, audit, memory and MCP. Required audit: prove tool execution is policy-gated, approvals cannot be bypassed, and audit records survive failures.
+- **x4-sandbox** — README explicitly warns process mode is not an OS sandbox and cannot enforce network denial or hard CPU/memory/disk/filesystem quotas. This is a verified documentation limitation, not an inference. Do not run hostile code through process mode; required next step is OS-level isolation or enforce the documented trusted-code boundary.
+- **ariexus** — README describes typed task graphs, a tool registry with sandboxed filesystem and allow-listed terminal, risk approvals, immutable audit logging, retry/timeout and compensation planning. Required audit: test path traversal, shell allowlists, approval bypass, retry idempotency and compensation failures.
+
+### AI provider, memory and research components
+
+- **x4-ai** — README describes provider-agnostic generate/stream/embed/tool/evaluate APIs across OpenAI, Anthropic, Gemini and local models. Required audit: verify provider-specific auth, retry policy, timeout bounds, prompt/data redaction and cost/latency accounting.
+- **x4-runtime** — README describes local-first hardware-aware model routing, policy gate, execution receipt and fallback; cloud fallback is opt-in. Example commands: `x4-runtime detect`, `recommend --ram 8`, and `route --dry-run`. README states provider health and metering include stubs/placeholders; production inference is not established.
+- **x4-local-ai-runtime** — README describes hardware detection and model-size recommendations with explicit cloud fallback. Example commands: `x4-ai detect` and `x4-ai recommend --ram 8 --gpu-vram 0`. README says production inference claims are not made until backends are wired and tested.
+- **x4-memory** — README describes local-first working, episodic, semantic and knowledge-graph memory with provenance, namespace, export/deletion and privacy controls. Required audit: test deletion propagation, retention enforcement, tenant/namespace isolation and backups.
+- **x4-memory-core** — README describes working, episodic and semantic layers and a storage implementation boundary. Required audit: verify persistence implementation, isolation, migration behavior and data deletion.
+- **x4-research** — README describes evidence-first research with source ranking, evidence extraction, claim graphs, contradiction detection and citation validation. Required audit: verify citations are grounded in retrieved source spans and conflicting evidence cannot be silently discarded.
+- **x4-eval** — README marks the project as L0 bootstrapped and explicitly says no production evaluation is claimed until evidence advances. Pipeline is runner → evaluator → reporter with lineage required.
+- **x4-eval-harness** — README describes evaluation suites, dataset/run lineage validation, execution, evidence capture, scoring and baseline comparison. Required audit: test reproducibility, dataset provenance and threshold handling.
+
+### MCP and skill supply chain
+
+- **x4-mcp-gateway** — README pipeline: client → authentication → registry/discovery → schema validation → policy/risk decision (deny/allow/human approval) → invocation/result filter/audit. Required audit: enforce authz before tool invocation, prevent schema coercion bypass, rate-limit per identity and redact tool results.
+- **x4-mcp-prod** — README describes stdio/HTTP transport, request schema validation, authentication/permissions, per-client rate limits, tool allow-lists and audit trail. Required audit: transport parity, authorization tests and denial-of-service bounds.
+- **x4-skills** — README describes a verified skill registry with integrity and capability declarations; CLI includes validate, inspect, score, lock, search and verify. Required audit: verify hashes cover all executable content, lockfile trust, capability minimization and path traversal protections.
+- **x4-agent-skills-hub** — README describes a skills catalog with quality, security, compatibility and maintenance scoring generated by CI. Required audit: ensure scores derive from executed checks and unknown/missing evidence never defaults to a passing score.
+- **x4-mcpgen** — README describes generating MCP server scaffolds with explicit tool allow-lists, generated tool tests, SECURITY.md, license and CI. Example: `x4-mcpgen init weather --tools 2`, followed by pytest, validate and test. Required audit: test generator output for unsafe defaults and ensure generated actions are pinned.
+- **x4-mcp-server-starter** — README describes scaffold generation and commands `x4-mcp init`, `x4-mcp doctor`, `x4-mcp test`, `x4-mcp security` and `x4-mcp validate`. README explicitly says scaffold does not equal production.
+- **x4-sec** — README describes scanning AI-agent projects, MCP servers, skills, hooks and agent configs; CLI supports JSON and SARIF. Required audit: verify rule coverage, false negatives, severity policy and CI gate behavior. The inspected security workflow has a non-blocking SARIF upload.
+- **x4-ai-security-scanner** — README describes deterministic rules-first scanning for agent repositories, skills, hooks and MCP configs, with explicit IDs and SARIF. Required audit: regression corpus, rule provenance and fail-closed exit codes.
+- **x4-agent-observability** — README describes vendor-neutral local-first telemetry, console/JSONL exporters, redaction and evidence receipts, with optional OpenTelemetry compatibility. Required audit: prove redaction before export, integrity of lineage and bounded storage.
+
+### Scaffolding, workflow and local workbench
+
+- **project-scaffold** — README describes a Node/Express scaffold with a Python X4 runtime MVP under x4/: policy wall, task classification, provider selection, Ollama/Groq adapters, AST syntax checks, JSONL audit ledger and HTTP health/chat endpoints. Required audit: verify bind address defaults, auth on chat endpoint, SSRF controls for providers and no unsafe execution path.
+- **omniforge** — README describes a local Ollama/ChromaDB/sentence-transformers workbench that plans tool sequences, reuses prior campaigns and records skills/feedback. Required audit: validate tool permissions, vector-store data isolation and untrusted content handling.
+- **workflow-lab** — README describes reusable CI/security/Docker workflows, including references to reusable workflows on `@main`. This is a mutable reference and must be replaced with a reviewed commit SHA or release tag backed by a verified immutable ref before use as a security control.
+- **arise-genops-core** — repository lookup succeeded but README.md returned 404 in this pass. Purpose and architecture are UNKNOWN until the default branch tree is inspected.
+- **x4-fleet** — architecture and release-contract source inspection is documented in the PR #6 remediation ledger above; its release/deployment pipeline remains a design contract, not a production deploy executor.
+- **arise-v9** — CI, Docker Compose and Nginx configuration were inspected and tested by CI as documented above. The Cloudflare production deployment job was skipped for the PR branch.
+
+### README-derived architecture map
+
+```mermaid
+flowchart LR
+  CORE[x4-core: config/events/auth/schemas] --> AGENTS[x4-agents: task graphs and approvals]
+  AGENTS --> SANDBOX[x4-sandbox: process execution boundary]
+  AGENTS --> MEMORY[x4-memory: provenance and retention]
+  AGENTS --> MCP[x4-mcp-gateway / x4-mcp-prod]
+  SKILLS[x4-skills / agent-skills-hub] --> MCPGEN[x4-mcpgen: scaffold generator]
+  MCPGEN --> SEC[x4-sec / ai-security-scanner]
+  SEC --> RUNTIME[x4-runtime / local-ai-runtime]
+  RUNTIME --> OBS[x4-obs / agent-observability]
+  RESEARCH[x4-research: claims and citations] --> EVAL[x4-eval / eval-harness]
+  EVAL --> GATE[Evidence-backed quality gate]
+```
+
+**Validation boundary:** this diagram reflects README-described intended roles. It does not establish runtime dependency wiring, complete implementation, successful tests, production readiness or security certification. Those require source, test and configuration inspection for each repository.
