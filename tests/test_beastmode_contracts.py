@@ -1,14 +1,18 @@
 """Adversarial tests for the X4 BEASTMODE local contracts."""
 from __future__ import annotations
 
+import json
 import sys
 from datetime import UTC, datetime
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from jsonschema import Draft202012Validator
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 
 from scripts.fleet_scorecard import build_scorecard
-from scripts.verify_release import validate_manifest  # noqa: E402
+from scripts.verify_release import validate_manifest
 
 VALID = {
     "schema_version": "1",
@@ -55,19 +59,32 @@ def test_manifest_rejects_invalid_digest():
 
 
 def test_manifest_rejects_calendar_invalid_timestamp():
-    assert any("invalid created_at_utc" in error
+    assert any("RFC3339 UTC timestamp" in error
                for error in validate_manifest(dict(VALID, created_at_utc="2026-99-99T29:99:99Z")))
 
 
-def test_manifest_rejects_mutable_or_wrong_registry_image():
-    assert any("invalid image repository" in error
-               for error in validate_manifest(dict(VALID, image="docker.io/team/image")))
+def test_manifest_rejects_non_rfc3339_timestamp_shapes():
+    for timestamp in ("not-a-dateZ", "2026-10-19 12:00:00Z", "2026-10-19T12:00Z", "2026-10-19T12:00:00+00:00"):
+        assert validate_manifest(dict(VALID, created_at_utc=timestamp))
+
+
+def test_manifest_rejects_mutable_tag_and_wrong_registry():
+    for image in ("docker.io/team/image", "ghcr.io/dhe-cruzer69/x4-fleet:latest"):
+        assert any("invalid image repository" in error
+                   for error in validate_manifest(dict(VALID, image=image)))
+
+
+def test_schema_documents_are_valid_draft_2020_12_schemas():
+    for path in sorted((ROOT / "schemas").glob("*.schema.json")):
+        schema = json.loads(path.read_text(encoding="utf-8"))
+        Draft202012Validator.check_schema(schema)
 
 
 def test_scorecard_does_not_invent_a_score():
     result = build_scorecard({
         "generated_at": "2026-10-19T00:00:00Z",
-        "repos": [{"name": "owner/repo", "archived": False, "private": True, "pushed_at": None}],
+        "total": 1,
+        "repos": [{"full_name": "owner/repo", "archived": False, "private": True, "pushed_at": None}],
     })
     assert result["status"] == "OBSERVED"
     assert result["score"] is None
@@ -78,10 +95,32 @@ def test_scorecard_does_not_invent_a_score():
 def test_scorecard_fails_closed_on_duplicate_names():
     result = build_scorecard({
         "generated_at": "2026-10-19T00:00:00Z",
-        "repos": [{"name": "same"}, {"name": "same"}],
+        "total": 2,
+        "repos": [{"full_name": "owner/same", "archived": False}, {"full_name": "owner/same", "archived": False}],
     })
     assert result["status"] == "UNKNOWN"
-    assert result["duplicate_names"] == ["same"]
+    assert result["duplicate_names"] == ["owner/same"]
+
+
+def test_scorecard_fails_closed_on_truncated_inventory():
+    result = build_scorecard({
+        "generated_at": "2026-10-19T00:00:00Z",
+        "total": 2,
+        "repos": [{"full_name": "owner/repo", "archived": False}],
+    })
+    assert result["status"] == "UNKNOWN"
+    assert any("inventory is incomplete" in error for error in result["validation_errors"])
+
+
+def test_scorecard_rejects_bad_timestamp_and_missing_full_name():
+    result = build_scorecard({
+        "generated_at": "not-a-date",
+        "total": 1,
+        "repos": [{"name": "repo", "archived": False, "pushed_at": 12345}],
+    })
+    assert result["status"] == "UNKNOWN"
+    assert any("generated_at" in error for error in result["validation_errors"])
+    assert any("full_name" in error for error in result["validation_errors"])
 
 
 def test_scorecard_rejects_bad_root_and_repos_shape():
