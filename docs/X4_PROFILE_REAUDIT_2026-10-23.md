@@ -315,3 +315,33 @@ flowchart LR
 ```
 
 **Validation boundary:** this diagram reflects README-described intended roles. It does not establish runtime dependency wiring, complete implementation, successful tests, production readiness or security certification. Those require source, test and configuration inspection for each repository.
+
+## 11. Rename source inventory and blockers
+
+The following 21 source names were checked in the earlier read-only phase. This is a source inventory, **not an approved source→target mapping**:
+
+1. x4-mcp-gateway
+2. x4-mcp-prod
+3. x4-ai-security-scanner
+4. x4-memory-core
+5. x4-eval-harness
+6. x4-agent-observability
+7. x4-agent-skills-hub
+8. x4-local-ai-runtime
+9. project-scaffold
+10. omniforge
+11. ariexus
+12. arise-v9
+13. workflow-lab
+14. arise-genops-core
+15. ariexcore-control-plane
+16. ariexcore-sandbox-runtime
+17. ariexcore-model-router
+18. ariexcore-autofix-engine
+19. ariexcore-observability
+20. ariexcore-mcp-gateway
+21. ariexcore-fleet-ops
+
+Verified collision blockers: x4-skills, x4-runtime, and x4-obs already exist. Related names x4-sec and x4-sec-action were noted as potential conflicts in the previous phase; their current target suitability is not asserted here. No rename was executed.
+
+Before renaming, require a table with source, exact target, target-exists result, package/container/image names, workflow references, badges, documentation links, secrets/environment dependencies, branch protection and rollback plan. Reject the entire batch if any target collides or any mapping is ambiguous.
