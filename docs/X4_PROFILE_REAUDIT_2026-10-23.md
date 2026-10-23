@@ -75,7 +75,7 @@ Release workflow grants `contents: write` and uses tag-pinned checkout/setup-pyt
 
 ## 5. End-to-end governance pipeline
 
-\`\`\`mermaid
+```mermaid
 flowchart TD
   A[Enumerate all repositories] --> B[Inspect source and workflow files]
   B --> C[Validate action SHAs and permissions]
@@ -91,7 +91,7 @@ flowchart TD
   J --> K[Explicit deployment approval]
   K --> L[Verify health, artifact digest and rollback]
   L --> M[Re-inventory and final report]
-\`\`\`
+```
 
 ## 6. Profile inventory — one row per repository
 
@@ -204,13 +204,13 @@ For each repository, the final source-level dossier must include: (1) observed p
 
 ## 8. Read-only commands for continued audit
 
-\`\`\`bash
+```bash
 gh auth status
 gh api user --jq '{login: .login, id: .id}'
 gh repo list dhe-cruzer69 --limit 200 --json name,visibility,isArchived,defaultBranchRef,url
 grep -RInE 'uses: [^ ]+@(v[0-9]+|main|master|latest)' .github/workflows 2>/dev/null
 grep -RInE 'contents: write|pull-requests: write|issues: write|id-token: write|persist-credentials: true' .github/workflows 2>/dev/null
-\`\`\`
+```
 
 Never print secret values or run write-capable workflows solely to audit them.
 
