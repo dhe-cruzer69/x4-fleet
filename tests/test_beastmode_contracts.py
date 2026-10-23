@@ -2,12 +2,12 @@
 from __future__ import annotations
 
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from scripts.fleet_scorecard import build_scorecard  # noqa: E402
+from scripts.fleet_scorecard import build_scorecard
 from scripts.verify_release import validate_manifest  # noqa: E402
 
 VALID = {
@@ -22,7 +22,7 @@ VALID = {
     "quality_status": "PASS",
     "security_status": "PASS",
     "integration_status": "PASS",
-    "created_at_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+    "created_at_utc": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
 }
 
 
