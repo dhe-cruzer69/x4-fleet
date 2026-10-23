@@ -30,8 +30,9 @@ sequenceDiagram
   CI->>CI: Integration test and scan candidate
   CI->>CI: Generate SBOM and hash bytes
   CI->>REG: Publish same candidate artifact
-  REG-->>CI: Registry digest
-  CI->>CI: Compare candidate and registry identities
+  CI->>REG: Resolve published reference independently
+  REG-->>CI: Independently observed digest
+  CI->>CI: Compare registry digest with tested artifact identity
   CI->>ATT: Create provenance for source, run, artifact, SBOM
   ATT-->>CI: Attestation result
   CI-->>DEP: Manifest + attestation + run identity
@@ -45,15 +46,15 @@ sequenceDiagram
 ## Acceptance rules
 
 1. No rebuild between verification and publication.
-2. Registry digest must be independently observed and match the verified artifact identity; multi-platform OCI indexes and platform manifests must not be confused.
+2. Registry digest must be independently resolved after publishing and match the verified artifact identity; multi-platform OCI indexes and platform manifests must not be confused.
 3. SBOM must exist, parse, and have a verified digest.
 4. Workflow provenance must bind repository, workflow identity, run ID, attempt, source SHA, and artifact digest.
 5. Deployment uses `image@sha256:...`, never a mutable tag.
 6. Running image identity must be observed from the host/runtime, not copied from the requested reference.
 7. HTTPS readiness must return HTTP 200 and a structured healthy result for required dependencies.
-8. A receipt reports success only after all required observations pass.
+8. A receipt reports success only after all required observations pass and requested and observed digests match.
 9. Failed deployments and rollback failures produce failure receipts; never fabricate a successful rollback.
 
 ## Explicit non-goals in this PR
 
-No Docker build/publish, registry login, SSH connection, VPS deployment, remote mutation, secret provisioning, or production environment setup is performed.
+No Docker build/publish, registry login, SSH connection, VPS deployment, remote mutation, secret provisioning, production environment setup, or rollback executor is performed.
