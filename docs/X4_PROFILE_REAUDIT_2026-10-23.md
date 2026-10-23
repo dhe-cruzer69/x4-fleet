@@ -8,10 +8,11 @@
 
 ## 1. Inventory verdict
 
-- Repositories returned: **100**; second page: **0**.
-- Public: **70**; private: **30**.
-- Archived: **2**; names: Repository, flow.
-- Default branches: main 96, master 3, canary 1.
+- Listing API A returned 100 records at offset 0 and 0 at offset 100; owner-affiliation API B returned 100 at offset 0 and 0 at offset 100.
+- Union of those two listing snapshots: **131 distinct repositories** (100 public, 31 private).
+- Archived in that union: **2** (`dhe-cruzer69/Repository`, `dhe-cruzer69/flow`).
+- Default branches in that union: main 127, master 3, canary 1.
+- Direct repository lookups and README fetches confirm at least 10 additional owned repositories outside the 131-name union: `x4-skills`, `x4-runtime`, `x4-obs`, `x4-sec`, `x4-local-ai-runtime`, `x4-mcpgen`, `x4-mcp-server-starter`, `x4-memory-core`, `x4-eval-harness`, and `x4-mcp-prod`. The complete profile inventory is therefore **not reconciled**.
 - Code search returned **61** matches for `uses: actions/` across **32** repositories. Search results are not guaranteed to enumerate every workflow, reusable workflow or composite action.
 
 ## 2. PR remediation and CI evidence
@@ -93,110 +94,143 @@ flowchart TD
   L --> M[Re-inventory and final report]
 ```
 
-## 6. Profile inventory — one row per repository
+## 6. Repository inventory — union of two listing endpoints
+
+Two connected listing methods returned different sets. The table below includes their 131 distinct repository names, but it is **not a complete profile inventory** because direct lookups confirmed additional repositories not returned by either list. Source coverage is shown explicitly; a README inspection is not a code/test/security audit.
 
 | # | Repository | Visibility | Archived | Default branch | Size (KB) | Blueprint / source coverage |
 |---:|---|---|---:|---|---:|---|
-| 1 | dhe-cruzer69/n8n-docs | public | no | main | 905905 | Metadata only; source architecture and tests UNKNOWN |
-| 2 | dhe-cruzer69/ReplitLM | public | no | main | 471 | Metadata only; source architecture and tests UNKNOWN |
-| 3 | dhe-cruzer69/aries-ai-os | private | no | main | 52 | Workflow inspected; broader source audit pending |
-| 4 | dhe-cruzer69/aries-ai-os1 | private | no | main | 224 | Metadata only; source architecture and tests UNKNOWN |
-| 5 | dhe-cruzer69/optimus-the-ai-platform-to-bu-ui | private | no | main | 250 | Metadata only; source architecture and tests UNKNOWN |
-| 6 | dhe-cruzer69/turbo-monorepo | private | no | main | 261 | Metadata only; source architecture and tests UNKNOWN |
-| 7 | dhe-cruzer69/nx-monorepo | private | no | main | 306 | Metadata only; source architecture and tests UNKNOWN |
-| 8 | dhe-cruzer69/next.js | public | no | canary | 2500023 | Metadata only; source architecture and tests UNKNOWN |
-| 9 | dhe-cruzer69/supabase | public | no | master | 2400882 | Metadata only; source architecture and tests UNKNOWN |
-| 10 | dhe-cruzer69/mobile | public | no | main | 9674 | Metadata only; source architecture and tests UNKNOWN |
-| 11 | dhe-cruzer69/arise-v9 | public | no | main | 1031 | Source inspected; PR #16 remediation applied; Compose CI passed |
-| 12 | dhe-cruzer69/abhiachar126-s | public | no | main | 1 | Metadata only; source architecture and tests UNKNOWN |
-| 13 | dhe-cruzer69/workflow-lab | public | no | main | 9 | Metadata only; source architecture and tests UNKNOWN |
-| 14 | dhe-cruzer69/markdownlint-cli-2 | public | no | main | 40069 | Metadata only; source architecture and tests UNKNOWN |
-| 15 | dhe-cruzer69/auto-fix-todo-test | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 16 | dhe-cruzer69/docs | public | no | main | 2325077 | Metadata only; source architecture and tests UNKNOWN |
-| 17 | dhe-cruzer69/glowing-parakeet | public | no | main | 11 | Metadata only; source architecture and tests UNKNOWN |
-| 18 | dhe-cruzer69/launchdarkly-github-agent | public | no | main | 218 | Metadata only; source architecture and tests UNKNOWN |
-| 19 | dhe-cruzer69/community | public | no | main | 740 | Metadata only; source architecture and tests UNKNOWN |
-| 20 | dhe-cruzer69/curly-pancake | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 21 | dhe-cruzer69/provides | private | no | main | 1 | Metadata only; source architecture and tests UNKNOWN |
-| 22 | dhe-cruzer69/Actions | private | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 23 | dhe-cruzer69/Importer | private | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 24 | dhe-cruzer69/Actions-2 | private | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 25 | dhe-cruzer69/specifically | private | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 26 | dhe-cruzer69/CLI | private | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 27 | dhe-cruzer69/Master | private | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 28 | dhe-cruzer69/playwright-mcp | public | no | main | 1963 | Metadata only; source architecture and tests UNKNOWN |
-| 29 | dhe-cruzer69/monorepo-turborepo | private | no | main | 261 | Metadata only; source architecture and tests UNKNOWN |
-| 30 | dhe-cruzer69/turborepo-v2.0 | private | no | main | 261 | Metadata only; source architecture and tests UNKNOWN |
-| 31 | dhe-cruzer69/arise-genops-core | public | no | master | 141 | Metadata only; source architecture and tests UNKNOWN |
-| 32 | dhe-cruzer69/Copilot | private | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 33 | dhe-cruzer69/Repository | private | yes | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 34 | dhe-cruzer69/github | private | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 35 | dhe-cruzer69/reimagined-potato | public | no | main | 954 | Metadata only; source architecture and tests UNKNOWN |
-| 36 | dhe-cruzer69/astro-blog-starter-template | private | no | main | 454 | Metadata only; source architecture and tests UNKNOWN |
-| 37 | dhe-cruzer69/flow | private | yes | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 38 | dhe-cruzer69/Actions9 | private | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 39 | dhe-cruzer69/GraphQL | private | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 40 | dhe-cruzer69/Actions2 | private | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 41 | dhe-cruzer69/Projects69 | private | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 42 | dhe-cruzer69/Repository69 | private | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 43 | dhe-cruzer69/ariex-omega | public | no | main | 11 | Metadata only; source architecture and tests UNKNOWN |
-| 44 | dhe-cruzer69/MCPe | private | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 45 | dhe-cruzer69/MCPl | private | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 46 | dhe-cruzer69/Status | private | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 47 | dhe-cruzer69/abhia1 | private | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 48 | dhe-cruzer69/project-scaffold | public | no | main | 135 | Metadata only; source architecture and tests UNKNOWN |
-| 49 | dhe-cruzer69/omniforge | public | no | main | 31 | Metadata only; source architecture and tests UNKNOWN |
-| 50 | dhe-cruzer69/ariexus | public | no | main | 20 | Metadata only; source architecture and tests UNKNOWN |
-| 51 | dhe-cruzer69/ariex4ops | private | no | main | 332 | Workflow inspected; broader source audit pending |
-| 52 | dhe-cruzer69/ish | public | no | master | 5602 | Metadata only; source architecture and tests UNKNOWN |
-| 53 | dhe-cruzer69/x4-claw- | private | no | main | 56 | Metadata only; source architecture and tests UNKNOWN |
-| 54 | dhe-cruzer69/dhe-cruzer69 | public | no | main | 69 | Metadata only; source architecture and tests UNKNOWN |
-| 55 | dhe-cruzer69/x4-core | public | no | main | 45 | Metadata only; source architecture and tests UNKNOWN |
-| 56 | dhe-cruzer69/x4-agents | public | no | main | 37 | Metadata only; source architecture and tests UNKNOWN |
-| 57 | dhe-cruzer69/x4-mcp | public | no | main | 8 | Metadata only; source architecture and tests UNKNOWN |
-| 58 | dhe-cruzer69/x4-research | public | no | main | 13 | Metadata only; source architecture and tests UNKNOWN |
-| 59 | dhe-cruzer69/x4-memory | public | no | main | 14 | Metadata only; source architecture and tests UNKNOWN |
-| 60 | dhe-cruzer69/x4-mcp-gateway | public | no | main | 17 | Metadata only; source architecture and tests UNKNOWN |
-| 61 | dhe-cruzer69/x4-ai | public | no | main | 14 | Metadata only; source architecture and tests UNKNOWN |
-| 62 | dhe-cruzer69/x4-sandbox | public | no | main | 161 | Metadata only; source architecture and tests UNKNOWN |
-| 63 | dhe-cruzer69/x4-commander | public | no | main | 2 | Metadata only; source architecture and tests UNKNOWN |
-| 64 | dhe-cruzer69/x4-assist | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 65 | dhe-cruzer69/x4-router | public | no | main | 7 | Metadata only; source architecture and tests UNKNOWN |
-| 66 | dhe-cruzer69/x4-code | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 67 | dhe-cruzer69/x4-docs | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 68 | dhe-cruzer69/x4-eng | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 69 | dhe-cruzer69/x4-workflow | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 70 | dhe-cruzer69/x4-vision | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 71 | dhe-cruzer69/x4-voice | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 72 | dhe-cruzer69/x4-guard | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 73 | dhe-cruzer69/x4-eval | public | no | main | 9 | Metadata only; source architecture and tests UNKNOWN |
-| 74 | dhe-cruzer69/x4-repair | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 75 | dhe-cruzer69/x4-log | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 76 | dhe-cruzer69/x4-security | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 77 | dhe-cruzer69/x4-metrics | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 78 | dhe-cruzer69/x4-trace | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 79 | dhe-cruzer69/x4-cache | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 80 | dhe-cruzer69/x4-queue | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 81 | dhe-cruzer69/x4-scheduler | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 82 | dhe-cruzer69/x4-notify | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 83 | dhe-cruzer69/x4-feed | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 84 | dhe-cruzer69/x4-search | public | no | main | 3 | Metadata only; source architecture and tests UNKNOWN |
-| 85 | dhe-cruzer69/x4-recommend | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 86 | dhe-cruzer69/x4-classify | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 87 | dhe-cruzer69/x4-summary | public | no | main | 2 | Metadata only; source architecture and tests UNKNOWN |
-| 88 | dhe-cruzer69/x4-translate | public | no | main | 3 | Metadata only; source architecture and tests UNKNOWN |
-| 89 | dhe-cruzer69/x4-codegen | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 90 | dhe-cruzer69/x4-test | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 91 | dhe-cruzer69/x4-deploy | public | no | main | 2 | Metadata only; source architecture and tests UNKNOWN |
-| 92 | dhe-cruzer69/x4-infra | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 93 | dhe-cruzer69/x4-config | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 94 | dhe-cruzer69/x4-secret | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 95 | dhe-cruzer69/x4-identity | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 96 | dhe-cruzer69/x4-auth | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 97 | dhe-cruzer69/x4-role | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 98 | dhe-cruzer69/x4-audit | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 99 | dhe-cruzer69/x4-billing | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
-| 100 | dhe-cruzer69/x4-subscription | public | no | main | 0 | Metadata only; source architecture and tests UNKNOWN |
+| 1 | dhe-cruzer69/abhia1 | private | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 2 | dhe-cruzer69/abhiachar126-s | public | no | main | 1 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 3 | dhe-cruzer69/Actions | private | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 4 | dhe-cruzer69/Actions-2 | private | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 5 | dhe-cruzer69/Actions2 | private | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 6 | dhe-cruzer69/Actions9 | private | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 7 | dhe-cruzer69/aries-ai-os | private | no | main | 52 | Sensitive workflow inspected; full source audit pending |
+| 8 | dhe-cruzer69/aries-ai-os1 | private | no | main | 224 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 9 | dhe-cruzer69/ariex-omega | public | no | main | 11 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 10 | dhe-cruzer69/ariex4ops | private | no | main | 332 | Sensitive workflow inspected; full source audit pending |
+| 11 | dhe-cruzer69/ariexcore-agent-memory | public | no | main | 2 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 12 | dhe-cruzer69/ariexcore-autofix-engine | public | no | main | 1 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 13 | dhe-cruzer69/ariexcore-beast-mode | public | no | main | 2 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 14 | dhe-cruzer69/ariexcore-context-engine | public | no | main | 1 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 15 | dhe-cruzer69/ariexcore-control-plane | public | no | main | 4 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 16 | dhe-cruzer69/ariexcore-eval-suite | public | no | main | 1 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 17 | dhe-cruzer69/ariexcore-evidence | public | no | main | 3 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 18 | dhe-cruzer69/ariexcore-fleet-ops | public | no | main | 3 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 19 | dhe-cruzer69/ariexcore-mcp-gateway | public | no | main | 1 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 20 | dhe-cruzer69/ariexcore-model-router | public | no | main | 1 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 21 | dhe-cruzer69/ariexcore-multi-agent-harness | public | no | main | 1 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 22 | dhe-cruzer69/ariexcore-observability | public | no | main | 1 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 23 | dhe-cruzer69/ariexcore-sandbox-runtime | public | no | main | 1 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 24 | dhe-cruzer69/ariexcore-sec-action | public | no | main | 1 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 25 | dhe-cruzer69/ariexcore-skill-registry | public | no | main | 2 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 26 | dhe-cruzer69/ariexus | public | no | main | 20 | README inspected; implementation/tests not independently validated |
+| 27 | dhe-cruzer69/arise-genops-core | public | no | master | 141 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 28 | dhe-cruzer69/arise-v9 | public | no | main | 1031 | Source/workflows inspected; PR #16 Compose CI passed |
+| 29 | dhe-cruzer69/astro-blog-starter-template | private | no | main | 454 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 30 | dhe-cruzer69/auto-fix-todo-test | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 31 | dhe-cruzer69/CLI | private | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 32 | dhe-cruzer69/community | public | no | main | 740 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 33 | dhe-cruzer69/Copilot | private | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 34 | dhe-cruzer69/curly-pancake | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 35 | dhe-cruzer69/dhe-cruzer69 | public | no | main | 69 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 36 | dhe-cruzer69/docs | public | no | main | 2325077 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 37 | dhe-cruzer69/flow | private | yes | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 38 | dhe-cruzer69/github | private | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 39 | dhe-cruzer69/glowing-parakeet | public | no | main | 11 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 40 | dhe-cruzer69/GraphQL | private | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 41 | dhe-cruzer69/Importer | private | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 42 | dhe-cruzer69/ish | public | no | master | 5602 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 43 | dhe-cruzer69/launchdarkly-github-agent | public | no | main | 218 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 44 | dhe-cruzer69/markdownlint-cli-2 | public | no | main | 40069 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 45 | dhe-cruzer69/Master | private | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 46 | dhe-cruzer69/MCPe | private | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 47 | dhe-cruzer69/MCPl | private | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 48 | dhe-cruzer69/mobile | public | no | main | 9674 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 49 | dhe-cruzer69/monorepo-turborepo | private | no | main | 261 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 50 | dhe-cruzer69/n8n-docs | public | no | main | 905905 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 51 | dhe-cruzer69/next.js | public | no | canary | 2500023 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 52 | dhe-cruzer69/nx-monorepo | private | no | main | 306 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 53 | dhe-cruzer69/omniforge | public | no | main | 31 | README inspected; implementation/tests not independently validated |
+| 54 | dhe-cruzer69/optimus-the-ai-platform-to-bu-ui | private | no | main | 250 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 55 | dhe-cruzer69/playwright-mcp | public | no | main | 1963 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 56 | dhe-cruzer69/project-scaffold | public | no | main | 135 | README inspected; implementation/tests not independently validated |
+| 57 | dhe-cruzer69/Projects69 | private | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 58 | dhe-cruzer69/provides | private | no | main | 1 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 59 | dhe-cruzer69/reimagined-potato | public | no | main | 954 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 60 | dhe-cruzer69/ReplitLM | public | no | main | 471 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 61 | dhe-cruzer69/Repository | private | yes | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 62 | dhe-cruzer69/Repository69 | private | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 63 | dhe-cruzer69/specifically | private | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 64 | dhe-cruzer69/Status | private | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 65 | dhe-cruzer69/supabase | public | no | master | 2400882 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 66 | dhe-cruzer69/turbo-monorepo | private | no | main | 261 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 67 | dhe-cruzer69/turborepo-v2.0 | private | no | main | 261 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 68 | dhe-cruzer69/umbra-blue-pilot-breeze | private | no | main | 2551 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 69 | dhe-cruzer69/workflow-lab | public | no | main | 9 | README inspected; implementation/tests not independently validated |
+| 70 | dhe-cruzer69/x4-agent-observability | public | no | main | 13 | README inspected; implementation/tests not independently validated |
+| 71 | dhe-cruzer69/x4-agent-router | public | no | main | 2 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 72 | dhe-cruzer69/x4-agent-skills-hub | public | no | main | 17 | README inspected; implementation/tests not independently validated |
+| 73 | dhe-cruzer69/x4-agents | public | no | main | 37 | README inspected; implementation/tests not independently validated |
+| 74 | dhe-cruzer69/x4-ai | public | no | main | 14 | README inspected; implementation/tests not independently validated |
+| 75 | dhe-cruzer69/x4-ai-security-scanner | public | no | main | 15 | README inspected; implementation/tests not independently validated |
+| 76 | dhe-cruzer69/x4-alert | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 77 | dhe-cruzer69/x4-analytics | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 78 | dhe-cruzer69/x4-approval | public | no | main | 13 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 79 | dhe-cruzer69/x4-assist | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 80 | dhe-cruzer69/x4-audit | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 81 | dhe-cruzer69/x4-auth | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 82 | dhe-cruzer69/x4-autofix | public | no | main | 10 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 83 | dhe-cruzer69/x4-backup | public | no | main | 2 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 84 | dhe-cruzer69/x4-batch | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 85 | dhe-cruzer69/x4-beast | public | no | main | 53 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 86 | dhe-cruzer69/x4-billing | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 87 | dhe-cruzer69/x4-cache | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 88 | dhe-cruzer69/x4-cdn | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 89 | dhe-cruzer69/x4-classify | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 90 | dhe-cruzer69/x4-claw- | private | no | main | 56 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 91 | dhe-cruzer69/x4-code | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 92 | dhe-cruzer69/x4-codegen | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 93 | dhe-cruzer69/x4-commander | public | no | main | 2 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 94 | dhe-cruzer69/x4-config | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 95 | dhe-cruzer69/x4-context | public | no | main | 11 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 96 | dhe-cruzer69/x4-core | public | no | main | 45 | README inspected; implementation/tests not independently validated |
+| 97 | dhe-cruzer69/x4-dashboard | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 98 | dhe-cruzer69/x4-db | public | no | main | 2 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 99 | dhe-cruzer69/x4-deploy | public | no | main | 2 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 100 | dhe-cruzer69/x4-docs | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 101 | dhe-cruzer69/x4-eng | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 102 | dhe-cruzer69/x4-eval | public | no | main | 9 | README inspected; implementation/tests not independently validated |
+| 103 | dhe-cruzer69/x4-feed | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 104 | dhe-cruzer69/x4-guard | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 105 | dhe-cruzer69/x4-identity | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 106 | dhe-cruzer69/x4-infra | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 107 | dhe-cruzer69/x4-log | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 108 | dhe-cruzer69/x4-mcp | public | no | main | 8 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 109 | dhe-cruzer69/x4-mcp-gateway | public | no | main | 17 | README inspected; implementation/tests not independently validated |
+| 110 | dhe-cruzer69/x4-memory | public | no | main | 14 | README inspected; implementation/tests not independently validated |
+| 111 | dhe-cruzer69/x4-metrics | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 112 | dhe-cruzer69/x4-notify | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 113 | dhe-cruzer69/x4-queue | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 114 | dhe-cruzer69/x4-recommend | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 115 | dhe-cruzer69/x4-repair | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 116 | dhe-cruzer69/x4-research | public | no | main | 13 | README inspected; implementation/tests not independently validated |
+| 117 | dhe-cruzer69/x4-role | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 118 | dhe-cruzer69/x4-router | public | no | main | 7 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 119 | dhe-cruzer69/x4-sandbox | public | no | main | 161 | README inspected; implementation/tests not independently validated |
+| 120 | dhe-cruzer69/x4-scheduler | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 121 | dhe-cruzer69/x4-search | public | no | main | 3 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 122 | dhe-cruzer69/x4-secret | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 123 | dhe-cruzer69/x4-security | public | no | main | 0 | README inspected; implementation/tests not independently validated |
+| 124 | dhe-cruzer69/x4-subscription | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 125 | dhe-cruzer69/x4-summary | public | no | main | 2 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 126 | dhe-cruzer69/x4-test | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 127 | dhe-cruzer69/x4-trace | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 128 | dhe-cruzer69/x4-translate | public | no | main | 3 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 129 | dhe-cruzer69/x4-vision | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 130 | dhe-cruzer69/x4-voice | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
+| 131 | dhe-cruzer69/x4-workflow | public | no | main | 0 | Metadata only; architecture/tests/deployment UNKNOWN |
 
 ## 7. Per-repository blueprint standard
 
