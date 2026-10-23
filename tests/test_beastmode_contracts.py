@@ -11,9 +11,9 @@ from jsonschema import Draft202012Validator, FormatChecker
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from scripts.fleet_scorecard import build_scorecard  # noqa: E402
-from scripts.verify_release import validate_manifest  # noqa: E402
-from scripts.verify_receipt import validate_receipt  # noqa: E402
+from scripts.fleet_scorecard import build_scorecard
+from scripts.verify_receipt import validate_receipt
+from scripts.verify_release import validate_manifest
 
 DIGEST = "sha256:" + "d" * 64
 RECEIPT = {
